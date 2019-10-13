@@ -563,7 +563,11 @@
     slide: false,
     pause: 'hover',
     wrap: true,
-    touch: true
+    touch: true,
+    autoplay:true,
+    autoplayTimeout:9000,
+    autoplayHoverPause:false,
+    nav:false
   };
   var DefaultType = {
     interval: '(number|boolean)',

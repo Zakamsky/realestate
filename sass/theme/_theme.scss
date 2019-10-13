@@ -1,1 +1,163 @@
-// This is an empty scss file for your custom styles - Please add your super duper awesome mega design styles here
+.wrapper-navbar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: $wrapper-navbar-height;
+  z-index: $zindex-navbar;
+}
+.hero-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: $zindex-slider;
+  overflow: hidden;
+  .carousel-inner,
+  .carousel-item{
+    height: 100%;
+  }
+  .carousel-item img{
+    height: 100% !important;
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    object-position: center;
+  }
+}
+#wrapper-hero.wrapper-hero{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-top: $wrapper-navbar-height !important;
+}
+.main-content-wrapper:not(.index-wrapper) {
+  margin-top: $wrapper-navbar-height;
+}
+//=====wp property search filter=====
+.property_homepage .properties_pagination{
+  display: none;
+}
+.wpp_search_elements{
+  padding: 1em;
+  margin: 0;
+  border-radius: 0;
+  background: rgba(#fff, 0.6);
+}
+.wpp_search_properties_widget .wpp_search_elements ul{
+  list-style: none;
+  padding-left: 0;
+}
+.wpp_search_elements,
+.wpp_search_elements ul,
+.wpp_search_elements li,
+.wpp_search_elements ul li{
+  display: flex;
+  flex-wrap: wrap; //???
+}
+.wpp_search_properties_widget .wpp_search_elements li{
+  flex-basis: 100%;
+  margin-bottom: 1em;
+}
+.wpp_search_elements li + li{
+  margin-left: 1.2em;
+}
+//.wpp_search_elements .wpp_search_label,
+.wpp_search_properties_widget .wpp_search_elements .wpp_search_label{
+  margin-bottom: 0;
+  width: unset;
+  vertical-align: middle;
+  line-height: 38px;
+  padding-right: 0.6em;
+}
+.wpp_search_elements .wpp_dash{
+  vertical-align: middle;
+  line-height: 38px;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+}
+.wpp_search_attribute_wrap{
+  display: flex;
+}
+input.wpp_search_input_field_min,
+input.wpp_search_input_field_max {
+  width: 7em;
+}
+
+.property__card{
+  position: relative;
+  margin-bottom: 30px;
+  border-radius: $border-radius;
+  box-shadow: 1px 2px 4px #C1C1C1;
+  overflow: hidden;
+  transition: 0.7s all ease;
+  .property_image{
+    max-height: 220px;
+    min-height: 220px;
+  }
+  .property_overview_thumb{
+    display: block;
+    overflow: hidden;
+    &>img{
+      object-fit: cover;
+      transform: scale(1);
+      transition: 0.7s all ease;
+    }
+  }
+  &:hover{
+    box-shadow: 2px 4px 6px #C1C1C1;
+    & .property_overview_thumb>img{
+      transform: scale(1.1);
+    }
+  }
+  &-flags{
+    position: absolute;
+    top: 10px;
+    left: 0;
+    list-style: none;
+    padding: 0;
+    &_item{
+      padding: 1px 3px;
+      width: fit-content;
+      max-width: max-content;
+    }
+    &_item + &_item{
+      margin-top: 0.5em;
+    }
+    &_item.operation{
+      background: $primary;
+      color: $light;
+    }
+    &_item.tagline{
+      background: $secondary;
+    }
+  }
+  &-description{
+    display: block;
+    padding: 1em;
+    color: $dark;
+    &:hover{
+      text-decoration: none;
+    }
+  }
+
+
+}
+
+.main-content-wrapper{
+  margin-bottom: $wrapper-footer-height;
+  background: #fff;
+}
+.wrapper-footer{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: $wrapper-footer-height;
+  z-index: $zindex-footer;
+}
+
+//@import "theme/media";
+@import "media";

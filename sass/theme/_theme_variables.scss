@@ -3,4 +3,21 @@
 // Just copy a variable from src/sass/bootstrap4/_variables.scss, paste it here and edit the value.
 
 
-$primary: #5533ff; // Thats a sample how you could change a BootStrap variable.
+$primary: #672533;
+$secondary: #f7dcd5;
+
+$wrapper-navbar-height: 70px;
+$wrapper-footer-height: 100px; //proximamente
+
+$zindex-navbar: 1025;
+$zindex-slider: -100;
+$zindex-footer: -500;
+
+/*
+$zindex-dropdown:                   1000 !default;
+$zindex-sticky:                     1020 !default;
+$zindex-fixed:                      1030 !default;
+$zindex-modal-backdrop:             1040 !default;
+$zindex-modal:                      1050 !default;
+$zindex-popover:                    1060 !default;
+$zindex-tooltip:                    1070 !default;*/

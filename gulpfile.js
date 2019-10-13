@@ -344,4 +344,5 @@ gulp.task('compile', gulp.series('styles', 'scripts', 'dist'));
 // Run:
 // gulp
 // Starts watcher (default task)
-gulp.task('default', gulp.series('watch'));
+// gulp.task('default', gulp.series('watch'));
+gulp.task('default', gulp.series('watch-bs'));

@@ -19,20 +19,30 @@ get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
+
 <?php if ( is_front_page() && is_home() ) : ?>
 	<?php get_template_part( 'global-templates/hero' ); ?>
 <?php endif; ?>
 
-<div class="wrapper" id="index-wrapper">
+<div class="wrapper main-content-wrapper index-wrapper" id="index-wrapper">
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
 		<div class="row">
-
+            
 			<!-- Do the left sidebar check and opens the primary div -->
 			<?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
 
 			<main class="site-main" id="main">
+                <div class="property_homepage">
+
+                    <?php echo do_shortcode('[property_overview featured=true template=frontpage]'); ?>
+
+                    <!--<div class="wpp_view_all d-flex justify-content-center pt-3">
+                        <?php /*echo sprintf(__('<a class="btn btn-secondary" href="%s">view all</a>', ud_get_wp_property()->domain), site_url() . '/' . $wp_properties['configuration']['base_slug']); */?>
+                    </div>-->
+                </div>
+
 
 				<?php if ( have_posts() ) : ?>
 

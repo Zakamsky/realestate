@@ -1,22 +1,20 @@
 /*
-Theme Name: UnderStrap
-Theme URI: http://understrap.com
-Author: Holger Koenemann
-Author URI: http://www.holgerkoenemann.de
-GitHub Theme URI: https://github.com/understrap/understrap
-Description: Combination of Automattic´s _s theme and Bootstrap 4. Made as a solid starting point for your next theme project and WordPress website. Use it as starter theme or as a parent theme. It is up to you. Including Font Awesome support, built-in widget slider and much more you need for basic websites. IMPORTANT: All developer dependencies are not bundled with this install file. Just download the .zip, extract it and run "npm install" and "gulp copy-assets" inside the extracted /understrap folder.
+Theme Name: Realestate-vlc
+Theme URI: http://
+Author: Alex Elkin
+Author URI: http://elkin.dev
+
+Description: The theme Realestate-vlc based on UnderStrap - combination of Automattic´s _s theme and Bootstrap 4. Made as a solid starting point for your next theme project and WordPress website. Use it as starter theme or as a parent theme. It is up to you. Including Font Awesome support, built-in widget slider and much more you need for basic websites. IMPORTANT: All developer dependencies are not bundled with this install file. Just download the .zip, extract it and run "npm install" and "gulp copy-assets" inside the extracted /understrap folder.
 That downloads everything and moves it in place so that you can recompile your CSS and JS files;
-A developer version (with Gulp/node and Sass sources) is available on gitHub: https://github.com/understrap/understrap
-A child theme is available on Github, too: https://github.com/understrap/understrap-child;
-Version: 0.9.4
-License: UnderStrap WordPress Theme, Copyright 2013-2017 Holger Koenemann
-UnderStrap is distributed under the terms of the GNU GPL version 2
+Version: 1.0.0
+License: Realestate-vlc WordPress Theme, Copyright 2019 Alex Elkin
+Realestate-vlc is distributed under the terms of the GNU GPL version 2
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: understrap
+Text Domain: realestate-vlc
 Tags: one-column, custom-menu, featured-images, theme-options, translation-ready
 
 This theme, like WordPress, is licensed under the GPL.
-UnderStrap is based on Underscores http://underscores.me/, (C) 2012-2016 Automattic, Inc.
+Realestate-vlc is based on UnderStrap https://understrap.com/ (C) 2013-2017 Holger Koenemann
 
 Resource Licenses:
 Font Awesome: http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
@@ -26,11 +24,3 @@ jQuery: https://jquery.org | (Code licensed under MIT)
 WP Bootstrap Navwalker by Edward McIntyre: https://github.com/twittem/wp-bootstrap-navwalker | GNU GPL
 */
 
-/*
-This file is just used to identify the theme in WordPress.
-The compiled CSS output can be found in /css/theme.css
-The SASS sources for it can be found in /sass/
-The dependencies can be found in /src/ after running "gulp copy-assets" terminal command
-
-...and now go out and play!
-*/
