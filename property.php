@@ -16,90 +16,31 @@
  * @author Andy Potanin <andy.potnain@twincitiestech.com>
  * @package WP-Property
 */
-
 // Uncomment to disable fancybox script being loaded on this page
 //wp_deregister_script('wpp-jquery-fancybox');
 //wp_deregister_script('wpp-jquery-fancybox-css');
 ?>
 
 <?php get_header(); ?>
+
 <?php the_post(); ?>
 
-    <script type="text/javascript">
-    var map;
-    var marker;
-    var infowindow;
 
-    jQuery(document).ready(function() {
-
-      if(typeof jQuery.fn.fancybox == 'function') {
-        jQuery("a.fancybox_image, .gallery-item a").fancybox({
-          'type': "image",
-          'transitionIn'  :  'elastic',
-          'transitionOut'  :  'elastic',
-          'speedIn'    :  600,
-          'speedOut'    :  200,
-          'overlayShow'  :  false
-        });
-      }
-
-      if(typeof google == 'object') {
-        initialize_this_map();
-        setTimeout(function () {
-          if (jQuery('#infowindow').parents('.gm-style-iw').height() > 0) {
-            jQuery('#infowindow').parents('.gm-style-iw').addClass('scrollable');
-          }
-        }, 1500);
-      } else {
-        jQuery("#property_map").hide();
-      }
-
-    });
-
-
-  function initialize_this_map() {
-    <?php if($coords = WPP_F::get_coordinates()): ?>
-    var myLatlng = new google.maps.LatLng(<?php echo $coords['latitude']; ?>,<?php echo $coords['longitude']; ?>);
-    var myOptions = {
-      zoom: <?php echo (!empty($wp_properties['configuration']['gm_zoom_level']) ? $wp_properties['configuration']['gm_zoom_level'] : 13); ?>,
-      center: myLatlng,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-
-    map = new google.maps.Map(document.getElementById("property_map"), myOptions);
-
-    infowindow = new google.maps.InfoWindow({
-      content: '<?php echo WPP_F::google_maps_infobox($post); ?>',
-      maxWidth: 500
-    });
-
-     marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: '<?php echo addslashes($post->post_title); ?>',
-      icon: '<?php echo apply_filters('wpp_supermap_marker', '', $post->ID); ?>'
-    });
-
-    google.maps.event.addListener(infowindow, 'domready', function() {
-    document.getElementById('infowindow').parentNode.style.overflow='hidden';
-    document.getElementById('infowindow').parentNode.parentNode.style.overflow='hidden';
-    document.getElementById('infowindow').parentNode.parentNode.parentNode.classList.add('scrollable');
-   });
-
-   setTimeout("infowindow.open(map,marker);",1000);
-
-    <?php endif; ?>
-  }
-
-  </script>
-
-
-  <div id="container" class="<?php wpp_css('property::container', array((!empty($post->property_type) ? $post->property_type . "_container" : ""))); ?>">
-    <div id="content" class="<?php wpp_css('property::content', "property_content"); ?>" role="main">
+<div id="container" class="wrapper main-content-wrapper <?php wpp_css('property::container', array((!empty($post->property_type) ? $post->property_type . "_container" : ""))); ?>">
+    <div id="content" class="<?php echo esc_attr( $container ); ?>" tabindex="-1" role="main">
       <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+          <!-- try thumbnail -->
+          <img src="<?php echo $post->featured_image_url; ?>" alt="<?php echo $post->featured_image_title; ?>">
+          <!-- /try thumbnail -->
+          <!-- try galery -->
+          <?php foreach ($post->gallery as $slide) : ?>
+              <img src="<?php echo $slide['medium']/*$slide['large']*/; ?>" alt="<?php echo $slide['post_title']; ?>">
+          <?php endforeach; /** end of the propertyloop. */ ?>
 
+          <!-- /try galery -->
+<!--        todo: этот код в файле на рабочем столе =>  --><?php //print_r($post); ?>
 
-      <div class="<?php wpp_css('property::title', "building_title_wrapper"); ?>">
+          <div class="<?php wpp_css('property::title', "building_title_wrapper"); ?>">
         <h1 class="property-title entry-title"><?php the_title(); ?></h1>
         <h3 class="entry-subtitle"><?php the_tagline(); ?></h3>
       </div>
@@ -150,12 +91,12 @@
 
       </div><!-- .entry-content -->
 
-      <?php comments_template(); ?>
-
     </div><!-- #post-## -->
 
     </div><!-- #content -->
   </div><!-- #container -->
+
+
 <?php
   // Primary property-type sidebar.
   if ( isset( $post->property_type ) && is_active_sidebar( "wpp_sidebar_" . $post->property_type ) ) : ?>
@@ -167,5 +108,5 @@
     </div><!-- #primary .widget-area -->
 
 <?php endif; ?>
-
+    <!-- this 5 -->
 <?php get_footer(); ?>

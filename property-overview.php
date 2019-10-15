@@ -26,84 +26,123 @@
  */ ?>
 <?php
 if (have_properties()) {
-
-  $thumbnail_dimentions = WPP_F::get_image_dimensions($wpp_query['thumbnail_size']);
-
-  ?>
+//  $thumbnail_dimentions = WPP_F::get_image_dimensions($wpp_query['thumbnail_size']);
+?>
 <div class="<?php wpp_css('property_overview::row_view', "wpp_row_view wpp_property_view_result"); ?>">
 <div class="<?php wpp_css('property_overview::all_properties', "all-properties"); ?> row">
     <?php foreach (returned_properties('load_gallery=false') as $property) { ?>
-        <div class="property__card col-sm-6 col-md-4">
-            <div class="<?php wpp_css('property_overview::property_div', "property_div {$property['post_type']}"); ?>">
 
-    <div class="<?php wpp_css('property_overview::left_column', "wpp_overview_left_column"); ?>"
-         style="width:<?php echo $thumbnail_dimentions['width']; ?>px; ">
-      <?php property_overview_image(); ?>
-    </div>
+        <div class="col-sm-6 col-lg-4">
+            <div class="property__card">
+                <?php if (!empty($property['featured_image_url'])): ?>
+                    <?php property_overview_image(); ?>
+                <?php else: ?>
+                    <div class="property_image">
+                        <a class="property__card-image_blanked" href="<?php echo $property['permalink']; ?>" <?php echo $in_new_window; ?>>
+                            <svg class="image_blanked" >
+                                <use xlink:href="#blank_thumbnail"></use>
+                            </svg>
+                        </a>
+                    </div>
+                <?php endif; ?>
 
-  <div class="<?php wpp_css('property_overview::right_column', "wpp_overview_right_column"); ?>">
+                <a class="property__card-description" href="<?php echo $property['permalink']; ?>" <?php echo $in_new_window; ?>>
+                    <ul class="property__card-flags">
+                        <li class="property__card-flags_item operation">
+                            <span><?php echo $property['operation']; ?></span>
+                        </li>
+                        <?php if (!empty($property['tagline'])): ?>
+                            <li class="property__card-flags_item tagline">
+                                <span><?php echo $property['tagline']; ?></span>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                    <?php if (!empty($property['town'])): ?>
+                        <div class="locations">
+                            <i class="ico location-ico">
+                                <svg class="location-ico_svg" >
+                                    <use xlink:href="#location"></use>
+                                </svg>
+                            </i>
+                            <span class="locations-town">
+                                    <?php echo $property['town']; ?><?php if (!empty($property['region'])) echo ',' ?>
+                                </span>
+                            <?php if (!empty($property['region'])): ?>
+                                <span class="locations-region">
+                                        <?php echo $property['region']; ?>
+                                    </span>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
 
-    <ul class="<?php wpp_css('property_overview::data', "wpp_overview_data"); ?>">
-      <li class="property_title">
-        <a <?php echo $in_new_window; ?>
-          href="<?php echo $property['permalink']; ?>"><?php echo $property['post_title']; ?></a>
-        <?php if (!empty($property['is_child'])): ?>
-          <?php _e('of', ud_get_wp_property()->domain); ?> <a <?php echo $in_new_window; ?>
-            href='<?php echo $property['parent_link']; ?>'><?php echo $property['parent_title']; ?></a>
-        <?php endif; ?>
-      </li>
+                    <h5 class="property__card-title">
+                        <?php echo $property['post_title']; ?>
+                    </h5>
 
-      <?php if (!empty($property['custom_attribute_overview']) || !empty($property['tagline'])): ?>
-        <li class="property_tagline">
-          <?php if (isset($property['custom_attribute_overview']) && $property['custom_attribute_overview']): ?>
-            <?php echo $property['custom_attribute_overview']; ?>
-          <?php elseif ($property['tagline']): ?>
-            <?php echo $property['tagline']; ?>
-          <?php endif; ?>
-        </li>
-      <?php endif; ?>
+                    <div class="property__card-price"><?php echo $property['price']; ?></div>
+                    <div class="property__card-text">
+                        <?php
+                        $post_content_kses = wp_kses($property['post_content'], '');
+                        $short_description = substr($post_content_kses, 0, 120);
+                        echo $short_description, '...'?>
+                    </div>
 
-      <?php 
-      if( is_array($wpp_query[ 'attributes' ]) ){
-        foreach ($wpp_query[ 'attributes' ] as $attribute){
-          if(!empty($property[$attribute])){
-            $attribute_data = WPP_F::get_attribute_data($attribute);
-            $data = $property[$attribute];
-            if(is_array($data)){
-              $data = implode( ', ', $data);
-            }
-            echo "<li class='property_attributes property_$attribute'><span class='title'>{$attribute_data['title']}:</span> {$property[$attribute]}</li>";
-          }
-        }
-      }
-      ?>
+                    <div class="property__card-icons d-flex justify-content-between">
+                        <div class="property__card-icons_item">
+                            <i class="ico icons-ico area">
+                                <svg class="icons-ico_svg" >
+                                    <use xlink:href="#blueprint"></use>
+                                </svg>
+                            </i>
+                            <?php echo $property['area']; ?>
+                        </div>
+                        <div class="property__card-icons_item">
+                            <i class="ico icons-ico bedroom">
+                                <svg class="icons-ico_svg" >
+                                    <use xlink:href="#bedroom"></use>
+                                </svg>
+                            </i>
+                            <?php echo $property['bedroom']; ?>
+                        </div>
+                        <div class="property__card-icons_item">
+                            <i class="ico icons-ico bathroom">
+                                <svg class="icons-ico_svg" >
+                                    <use xlink:href="#bathroom"></use>
+                                </svg>
+                            </i>
+                            <?php echo $property['bathroom']; ?>
+                        </div>
+                        <div class="property__card-icons_item">
+                            <i class="ico icons-ico condition">
+                                <svg class="icons-ico_svg" >
+                                    <use xlink:href="#condition"></use>
+                                </svg>
+                            </i>
+                            <?php echo $property['condition']; ?>
+                        </div>
+                    </div>
+                </a>
 
-      <?php if (($show_children == "true" || $show_children === true) && !empty($property['children'])): ?>
-        <li class="child_properties">
-          <div class="wpd_floorplans_title"><?php echo $child_properties_title; ?></div>
-          <table class="wpp_overview_child_properties_table">
-            <?php foreach ($property['children'] as $child): ?>
-              <tr class="property_child_row">
-                <th class="property_child_title"><a
-                    href="<?php echo $child['permalink']; ?>"><?php echo $child['post_title']; ?></a></th>
-                <td class="property_child_price"><?php echo isset($child['price']) ? $child['price'] : ''; ?></td>
-              </tr>
-            <?php endforeach; ?>
-          </table>
-        </li>
-      <?php endif; ?>
+                <!-- --><?php
+                /*                      if( is_array($wpp_query[ 'attributes' ]) ){
+                                          echo '<ul class="attributes">';
+                                        foreach ($wpp_query[ 'attributes' ] as $attribute){
+                                          if(!empty($property[$attribute])){
+                                            $attribute_data = WPP_F::get_attribute_data($attribute);
+                                            $data = $property[$attribute];
+                                            if(is_array($data)){
+                                              $data = implode( ', ', $data);
+                                            }
+                                            echo "<li class='property_attributes property_$attribute'><span class='title'>{$attribute_data['title']}:</span> {$property[$attribute]}</li>";
+                                          }
+                                        }
+                                        echo '</ul>';
+                                      }
+                                      */?>
 
-      <?php if (!empty($wpp_query['detail_button'])) : ?>
-        <li><a <?php echo $in_new_window; ?> class="button"
-                                             href="<?php echo $property['permalink']; ?>"><?php echo $wpp_query['detail_button'] ?></a>
-        </li>
-      <?php endif; ?>
-    </ul>
+            </div><?php // .property__card-item  ?>
+        </div> <!-- .property__card -->
 
-    </div><?php // .wpp_right_column ?>
-
-    </div><?php // .property_div ?>
-        </div>
     <?php } /** end of the propertyloop. */ ?>
   </div><?php // .all-properties ?>
   </div><?php // .wpp_row_view ?>

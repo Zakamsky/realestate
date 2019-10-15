@@ -85,17 +85,22 @@ input.wpp_search_input_field_min,
 input.wpp_search_input_field_max {
   width: 7em;
 }
+//=====END wp property search filter=====
+//=====wp property card in listing=====
 
 .property__card{
   position: relative;
+  height: calc(100% - 30px);
   margin-bottom: 30px;
   border-radius: $border-radius;
   box-shadow: 1px 2px 4px #C1C1C1;
-  overflow: hidden;
+  //overflow: hidden;
   transition: 0.7s all ease;
   .property_image{
     max-height: 220px;
     min-height: 220px;
+    border-radius: $border-radius $border-radius 0 0;
+    overflow: hidden;
   }
   .property_overview_thumb{
     display: block;
@@ -103,23 +108,38 @@ input.wpp_search_input_field_max {
     &>img{
       object-fit: cover;
       transform: scale(1);
-      transition: 0.7s all ease;
+      transition: $property-card-transition;
     }
   }
-  &:hover{
-    box-shadow: 2px 4px 6px #C1C1C1;
-    & .property_overview_thumb>img{
-      transform: scale(1.1);
+  &-image_blanked{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 220px;
+    .image_blanked{
+      transform: scale(1);
+      transition: $property-card-transition;
+    }
+  }
+  &-description{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em 1.25em 1em;
+    height: calc(100% - 220px);
+    color: $body-color;
+    &:hover{
+      text-decoration: none;
     }
   }
   &-flags{
     position: absolute;
     top: 10px;
-    left: 0;
+    left: -5px;
     list-style: none;
     padding: 0;
     &_item{
-      padding: 1px 3px;
+      padding: 1px 5px;
       width: fit-content;
       max-width: max-content;
     }
@@ -134,16 +154,81 @@ input.wpp_search_input_field_max {
       background: $secondary;
     }
   }
-  &-description{
-    display: block;
-    padding: 1em;
-    color: $dark;
-    &:hover{
-      text-decoration: none;
+  .locations{
+    position: absolute;
+    top: 190px;
+    right: 0;
+    padding: 2px 5px 0;
+    color: $primary;
+    background: rgba($light, 0.6);
+    .location-ico{
+      display: inline-flex;
+      height: 1em;
+      width: 1em;
+      &_svg{
+        height: 100%;
+        width: 100%;
+        fill: $primary;
+      }
     }
   }
-
-
+  .property__card-flags_item,
+  .locations{
+    padding-left: 10px;
+    padding-right: 10px;
+    transform: skewX(-$ckew-degree);
+    & > *{
+      display: inline-block;
+      transform: skewX($ckew-degree);
+    }
+  }
+  &-title{
+    min-height: 50px;
+    transition: $property-card-transition;
+  }
+  &-price{
+    font-size: 22px;
+    color: $primary;
+  }
+  &-title,
+  &-price,
+  &-text{
+    margin-bottom: 1.25rem;
+  }
+  &-icons{
+    margin-top: auto;
+    min-height: 73px;
+    &_item{
+      flex: 1 1 25%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      .icons-ico{
+        display: inline-flex;
+        height: 1.5em;
+        width: 1.5em;
+        &_svg{
+          width: 100%;
+          height: 100%;
+          transition: $property-card-transition;
+        }
+      }
+    }
+  }
+  &:hover{
+    box-shadow: 2px 4px 6px #C1C1C1;
+    .property_overview_thumb>img,
+    .image_blanked{
+      transform: scale(1.1);
+    }
+    .property__card-title{
+      color: $primary;
+    }
+    .icons-ico_svg{
+      fill: $primary
+    }
+  }
 }
 
 .main-content-wrapper{
