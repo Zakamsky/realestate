@@ -15,9 +15,28 @@ get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
+<div class="parallax">
 <div class="wrapper main-content-wrapper" id="archive-wrapper">
+    <header class="page-header">
+        <?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
+    </header><!-- .page-header -->
+    <header class="entry_header parallax__group">
+        <div class="entry_header--block_img parallax__layer parallax__layer--back">
 
-	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+                <img src="<?php echo ARS_IMG_DIR; ?>/header-bg.jpg " alt="header background" class="entry_header--img">
+
+        </div>
+        <div class="entry_header--block_title parallax__layer parallax__layer--base">
+            <div class="entry_header--block_titles w-50">
+                <?php the_archive_title( '<h1 class="entry_header--title archive--title">', '</h1>' ); ?>
+                <?php the_archive_description( '<div class="taxonomy-description">', '</div>' ); ?>
+            </div>
+
+        </div>
+
+    </header><!-- .entry-header -->
+    <h3>archive.php</h3>
+    <div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
 		<div class="row">
 
@@ -27,13 +46,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<main class="site-main" id="main">
 
 				<?php if ( have_posts() ) : ?>
-
-					<header class="page-header">
-						<?php
-						the_archive_title( '<h1 class="page-title">', '</h1>' );
-						the_archive_description( '<div class="taxonomy-description">', '</div>' );
-						?>
-					</header><!-- .page-header -->
 
 					<?php /* Start the Loop */ ?>
 					<?php while ( have_posts() ) : the_post(); ?>
@@ -69,5 +81,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 	</div><!-- #content -->
 
 	</div><!-- #archive-wrapper -->
+</div><!-- .parallax -->
 
 <?php get_footer();

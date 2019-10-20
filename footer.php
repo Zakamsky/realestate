@@ -26,11 +26,13 @@ $container = get_theme_mod( 'understrap_container_type' );
 				<footer class="site-footer" id="colophon">
 
 					<div class="site-info">
-footer there
-                        <button class="btn btn-secondary">this</button>
-                        <button class="btn btn-outline-secondary">aqui</button>
-<!--						--><?php //understrap_site_info(); ?>
 
+                        <div class="site-info--description">
+                            <?php echo get_bloginfo('description'); ?>
+                        </div>
+                        <div class="site-info-copyright">
+                            <?php echo get_bloginfo('name'); ?> (C) <?php echo date('Y'); ?>
+                        </div>
 					</div><!-- .site-info -->
 
 				</footer><!-- #colophon -->
@@ -164,6 +166,16 @@ footer there
     </symbol>
 </svg>
 <?php wp_footer(); ?>
+
+
+<script>
+    var $ = jQuery.noConflict ();
+
+    <?php if (is_front_page()): ?>
+        new WOW().init();
+    <?php endif; ?>
+</script>
+
 
 </body>
 
