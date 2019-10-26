@@ -32,3 +32,34 @@ if ( ! function_exists( 'understrap_setup_theme_default_settings' ) ) {
 		}
 	}
 }
+
+if( function_exists('acf_add_options_page') ) {
+
+    acf_add_options_page(array(
+        'page_title' 	=> 'Настройки главной страницы',
+        'menu_title'	=> 'Главная страница',
+        'menu_slug' 	=> 'theme-general-settings',
+        'capability'	=> 'edit_posts',
+        'redirect'		=> false
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Настройки заголовков',
+        'menu_title'	=> 'Заголовки',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Настройки преимуществ',
+        'menu_title'	=> 'Преимущества',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+
+    acf_add_options_sub_page(array(
+        'page_title' 	=> 'Контактные данные',
+        'menu_title'	=> 'Контакты',
+        'parent_slug'	=> 'theme-general-settings',
+    ));
+
+
+}

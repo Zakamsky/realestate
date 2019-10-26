@@ -7,10 +7,10 @@
 
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
-
+global $wp_it_num;
 
 ?>
-<div class="post_card col-md-6">
+<div class="post_card <?php if($wp_it_num > 2){echo 'col-md-6 col-lg-4 wow bounceInUp';}else{echo 'col-md-6';}; ?>" data-wow-delay="0.<?php echo $wp_it_num; ?>1s">
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 <!--    content.php      -->
     <a class="post_card--link" href="<?php echo esc_url( get_permalink() ) ?>" rel="bookmark"> <!--esc_url( get_permalink() ) )-->

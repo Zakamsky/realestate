@@ -38,6 +38,16 @@ jQuery( document ).ready(function ($) {
         ]
     });
 
+    $('.click-opener-js').click(function () {
+        event.preventDefault();
+       $('.wpp_search_title--block').toggleClass('active')
+       $('.wpp_search_elements').toggleClass('open')
+    });
+
+    $('.contact_block--btn').click(function () {
+        $('.contact_block').toggleClass('open')
+    })
+
 });
 
 

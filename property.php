@@ -27,7 +27,6 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 <div class="parallax">
 <?php the_post(); ?>
-    <!--        todo: этот код в файле на рабочем столе =>  --><?php //print_r($post); ?>
 <div id="container" class="wrapper main-content-wrapper <?php wpp_css('property::container', array((!empty($post->property_type) ? $post->property_type . "_container" : ""))); ?>">
 
     <header class="entry_header parallax__group">
@@ -46,123 +45,68 @@ $container = get_theme_mod( 'understrap_container_type' );
 
     <?php //the_tagline(); ?>
 
-<!--
-$post->
-    [operation] => Туристическая аренда
-    [permalink] => //localhost:3000/properties/test-30-1/
-    [price] => 9,889€
-    [property_type] => land
-    [property_type_label] => Земли и участки
-    [referencia] => hgy67886
-    [region] => Валенсия
-    [tagline] => новинка
-    [town] => Valencia
 
-    [area] => 987 м²
-    [bathroom] => 2
-    [bedroom] => 4
-    [condition] => Хорошее состояние
+    <!--        todo: этот код в файле на рабочем столе =>  --><?php //print_r($wp_properties['property_stats']['referencia']); ?>
 
-$wp_properties->
-    [property_stats] => Array
-            (
-                [location] => Адрес
-                [tagline] => Дополнительно
-                [phone_number] => Телефон
-                [deposit] => Депозит
-                [operation] => Действие
-                [town] => Город
-                [region] => Район
-                [price] => Цена
-                [referencia] => referencia
-                [area] => Площадь
-                [bedroom] => Спальни
-                [bathroom] => Ванные комнаты
-                [condition] => Состояние
-            )
-
-  --><?php //print_r() ?>
 
     <div id="content" class="<?php echo esc_attr( $container ); ?>" tabindex="-1" role="main">
         <div class="row">
-            <main class="col single_property" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+            <main class="col single_property site-main" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+
 
                 <div class="<?php wpp_css('property::entry_content', "entry-content"); ?>">
-                  <div class="single_property--ref_line">
-                      Ref: <?php echo $post->referencia; ?> | <?php echo $post->property_type_label; ?> | <?php echo $post->operation; ?> | <?php echo $post->town; ?> | <?php echo $post->region; ?>
-                  </div>
-                  <h3 class="single_property--price text-primary">
-                      <?php echo $post->price; ?>
+                  <h4 class="single_property--ref_line">
+                      <?php echo $wp_properties['property_stats']['referencia']; ?>:&nbsp;<?php echo $post->referencia; ?> | <?php echo $post->property_type_label; ?> | <?php echo $post->operation; ?> | <?php echo $post->town; ?> | <?php echo $post->region; ?>
+                  </h4>
+                  <h3 class="single_property--price">
+                      <?php echo $wp_properties['property_stats']['price']; ?>:&nbsp;<?php echo $post->price; ?>
                   </h3>
-                <div class="<?php wpp_css('property::the_content', "wpp_the_content"); ?>">
+                <div class="<?php wpp_css('property::the_content', "wpp_the_content single_property--content"); ?>">
                     <?php @the_content(); ?>
                 </div>
-                  <div class="single_property--icons-block property__card-icons">
-                      <div class="property__card-icons_item">
-                          <i class="ico icons-ico area">
-                              <svg class="icons-ico_svg" >
-                                  <use xlink:href="#blueprint"></use>
-                              </svg>
-                          </i>s
-                          <?php echo $post->area; ?>
-                      </div>
-                      <div class="property__card-icons_item">
-                          <i class="ico icons-ico bedroom">
-                              <svg class="icons-ico_svg" >
-                                  <use xlink:href="#bedroom"></use>
-                              </svg>
-                          </i>
-                          <?php echo $post->bedroom; ?>
-                      </div>
-                      <div class="property__card-icons_item">
-                          <i class="ico icons-ico bathroom">
-                              <svg class="icons-ico_svg" >
-                                  <use xlink:href="#bathroom"></use>
-                              </svg>
-                          </i>
-                          <?php echo $post->bathroom; ?>
-                      </div>
-                      <div class="property__card-icons_item">
-                          <i class="ico icons-ico condition">
-                              <svg class="icons-ico_svg" >
-                                  <use xlink:href="#condition"></use>
-                              </svg>
-                          </i>
-                          <?php echo $post->condition; ?>
-                      </div>
-                  </div>
+                <div class="single_property--icons-block property__card-icons">
+                    <div class="property__card-icons_item">
+                        <i class="ico icons-ico area">
+                            <svg class="icons-ico_svg" >
+                              <use xlink:href="#blueprint"></use>
+                            </svg>
+                        </i>
+                        <?php echo $post->area; ?>
+                    </div>
+                    <div class="property__card-icons_item">
+                        <i class="ico icons-ico bedroom">
+                          <svg class="icons-ico_svg" >
+                              <use xlink:href="#bedroom"></use>
+                          </svg>
+                        </i>
+                        <?php echo $post->bedroom; ?>
+                    </div>
+                    <div class="property__card-icons_item">
+                      <i class="ico icons-ico bathroom">
+                          <svg class="icons-ico_svg" >
+                              <use xlink:href="#bathroom"></use>
+                          </svg>
+                      </i>
+                      <?php echo $post->bathroom; ?>
+                    </div>
+                    <div class="property__card-icons_item">
+                      <i class="ico icons-ico condition">
+                          <svg class="icons-ico_svg" >
+                              <use xlink:href="#condition"></use>
+                          </svg>
+                      </i>
+                      <?php echo $post->condition; ?>
+                    </div>
+                </div>
 
-                <?php if ( empty($wp_properties['property_groups']) || !isset( $wp_properties['configuration']['property_overview']['sort_stats_by_groups'] ) || $wp_properties['configuration']['property_overview']['sort_stats_by_groups'] != 'true' ) : ?>
-                  <ul id="property_stats" class="<?php wpp_css('property::property_stats', "property_stats overview_stats list"); ?>">
-                    <?php @draw_stats("display=list&make_link=true"); ?>
-                  </ul>
-                <?php else: ?>
-                  <?php @draw_stats("display=list&make_link=true"); ?>
-                <?php endif; ?>
+                <div class="single_property--additional_info">
+                    <?php @draw_stats("display=plain_list&sort_by_groups=true&include=orientation,to_airport,to_sea,view"); ?>
+                </div>
+                <div class="single_property--stats_block">
+                    <?php @draw_stats("sort_by_groups=true&exclude=operation,price,bedroom,bathroom,condition,area,tagline,referencia,town,region,orientation,to_airport,to_sea,view"); ?>
+                </div>
 
-                <?php
-                if(!empty($wp_properties['taxonomies'])) foreach($wp_properties['taxonomies'] as $tax_slug => $tax_data):
-                  if( ( isset( $tax_data['unique'] ) && $tax_data['unique'] ) || !empty($tax_data['hidden'])) continue;
-                ?>
-                  <?php if(get_features("type={$tax_slug}&format=count")):  ?>
-                  <div class="<?php echo $tax_slug; ?>_list">
-                  <h2><?php echo apply_filters('wpp::attribute::label',$tax_data['label']); ?></h2>
-                  <ul class="clearfix">
-                  <?php get_features("type={$tax_slug}&format=list&links=true"); ?>
-                  </ul>
-                  </div>
-                  <?php endif; ?>
-                <?php endforeach; ?>
-
-                <?php if(is_array($wp_properties['property_meta'])): ?>
-                <?php foreach($wp_properties['property_meta'] as $meta_slug => $meta_title):
-                  if(empty($post->$meta_slug) || $meta_slug == 'tagline')
-                    continue;
-                  ?>
-                  <h2><?php echo $meta_title; ?></h2>
-                  <p><?php echo  do_shortcode(html_entity_decode($post->$meta_slug)); ?></p>
-                <?php endforeach; ?>
-                <?php endif; ?>
+                <?php //additional group: orientation,to_airport,to_sea,view?>
 
                   <div class="single_property--gallery prop_gallery">
                       <?php if ( !empty($post->gallery)): ?>
@@ -177,10 +121,7 @@ $wp_properties->
 
               </div><!-- .entry-content -->
 
-
-
             </main><!-- #post-## -->
-
 
             <?php
             // Primary property-type sidebar.
@@ -194,7 +135,11 @@ $wp_properties->
 
             <?php endif; ?>
 
-    </div><!-- .row -->
+        </div><!-- .row -->
+        <?php //[contact-form-7 id="133" title="Контактная форма"]
+        echo do_shortcode("[contact-form-7 id=\"133\" title=\"Контактная форма\"]");
+        ?>
+
         <?php
          $shortcode_args = "[property_overview template=frontpage sorter_type=none hide_count=true operation=". $post->operation ." property_type=". $post->property_type." strict_search=true]";
          echo do_shortcode("$shortcode_args");

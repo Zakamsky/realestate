@@ -9,8 +9,10 @@
  * @package WP-Property
  */
 ?>
+
 <form action="<?php echo WPP_F::base_url($wp_properties['configuration']['base_slug']); ?>" method="post"
             class="wpp_shortcode_search_form" >
+
         <?php do_action("draw_property_search_form", $args); ?>
 <?php if ($sort_order) { ?>
   <input type="hidden" name="wpp_search[sort_order]" value="<?php echo $sort_order; ?>"/>
@@ -27,6 +29,7 @@
 <?php if (!empty($strict_search)) { ?>
   <input type="hidden" name="wpp_search[strict_search]" value="<?php echo $strict_search; ?>"/>
 <?php } ?>
+
 <?php
 //** If no property_type passed in search_attributes, we get defaults */
 if (is_array($searchable_property_types) && !array_key_exists('property_type', array_fill_keys($search_attributes, 1))) {
@@ -34,6 +37,7 @@ if (is_array($searchable_property_types) && !array_key_exists('property_type', a
 }
 ?>
 <ul class="wpp_search_elements">
+
   <?php
 
   if (isset($group_attributes) && $group_attributes) {
@@ -63,13 +67,7 @@ if (is_array($searchable_property_types) && !array_key_exists('property_type', a
       $is_a_group = true;
     }
     ?>
-    <li class="form-group wpp_search_group wpp_group_<?php echo $this_group; ?>">
-      <?php if ($is_a_group) { ?>
-        <span
-          class="wpp_search_group_title wpp_group_<?php echo $this_group; ?>_title"><?php echo $groups[$this_group]['name']; ?></span>
-      <?php } elseif ($group_attributes && $count == count($search_groups)) { ?>
-        <span class="wpp_search_group_title" style="height:1px;line-height:1px;">&nbsp;</span>
-      <?php } ?>
+    <li class="<?php if ($is_a_group){echo 'wpp_search_collaps--block';}else{echo 'wpp_search_title--block';} ?> wpp_group_<?php echo $this_group; ?> form-group wpp_search_group">
       <ul class="wpp_search_group wpp_group_<?php echo $this_group; ?>">
         <?php
         //** Begin Group Attributes */
@@ -93,7 +91,6 @@ if (is_array($searchable_property_types) && !array_key_exists('property_type', a
             continue;
           }
           $label = apply_filters('wpp::search_attribute::label', (empty($property_stats[$attrib]) ? WPP_F::de_slug($attrib) : $property_stats[$attrib]), $attrib);
-
           ?>
           <li
             class="form-group wpp_search_form_element seach_attribute_<?php echo $attrib; ?>  wpp_search_attribute_type_<?php echo isset($wp_properties['searchable_attr_fields'][$attrib]) ? $wp_properties['searchable_attr_fields'][$attrib] : $attrib; ?> <?php echo((!empty($wp_properties['searchable_attr_fields'][$attrib]) && $wp_properties['searchable_attr_fields'][$attrib] == 'checkbox') ? 'wpp-checkbox-el' : ''); ?><?php echo((!empty($wp_properties['searchable_attr_fields'][$attrib]) && ($wp_properties['searchable_attr_fields'][$attrib] == 'multi_checkbox' && count($search_values[$attrib]) == 1) || (isset($wp_properties['searchable_attr_fields'][$attrib]) && $wp_properties['searchable_attr_fields'][$attrib] == 'checkbox')) ? ' single_checkbox' : '') ?>">
@@ -118,19 +115,37 @@ if (is_array($searchable_property_types) && !array_key_exists('property_type', a
               echo apply_filters('wpp_search_form_field_' . $attrib, $this_field, $attrib, $label, $value, (isset($wp_properties['searchable_attr_fields'][$attrib]) ? $wp_properties['searchable_attr_fields'][$attrib] : false), $random_element_id);
               ?>
             </div>
-<!--            <div class="clear"></div>-->
+
           </li>
           <?php
         }
         //** End Group Attributes */
         ?>
+          <?php if ('not_a_group' === $this_group) : ?>
+            <li class="wpp_search--btns_block">
+                <button class="btn btn-secondary btn-add-more mr-2 click-opener-js">
+                    <i class="ico btn-ico">
+                        <svg class="ico_svg">
+                            <use xlink:href="#add_more"></use>
+                        </svg>
+                    </i>
+                </button>
+<!--                <input type="submit" class="wpp_search_button submit btn btn-primary"-->
+<!--                       value="--><?php //_e('Search', ud_get_wp_property()->domain) ?><!--"/>-->
+                <button type="submit" class="wpp_search_button btn-submit submit btn btn-primary"
+                        value="<?php _e('Search', ud_get_wp_property()->domain) ?>">
+                    <i class="ico btn-ico">
+                        <svg class="ico_svg">
+                            <use xlink:href="#search"></use>
+                        </svg>
+                    </i>
+                </button>
+            </li>
+
+          <?php endif; ?>
       </ul>
-<!--      <div class="clear"></div>-->
     </li>
   <?php } ?>
-  <li class="wpp_search_form_element submit">
-      <input type="submit" class="wpp_search_button submit btn btn-primary"
-                                                    value="<?php _e('Search', ud_get_wp_property()->domain) ?>"/>
-  </li>
+
 </ul>
 </form>

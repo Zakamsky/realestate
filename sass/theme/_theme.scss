@@ -1,3 +1,6 @@
+.wrapper{
+  overflow-x: hidden;
+}
 .wrapper-navbar{
   position: fixed;
   top: 0;
@@ -70,6 +73,17 @@ nav.navbar{
 .main-content-wrapper{
   margin-bottom: $wrapper-footer-height;
   background: #fff;
+  box-shadow: 0 0.3rem 1.5rem rgba($black, 0.8);
+}
+.homepage_block{
+  padding-top: 40px;
+  padding-bottom: 40px;
+  .hompage_header{
+    margin-bottom: 60px;
+    text-align: center;
+    color: $primary;
+    text-shadow: 1px 2px 4px $secondary;
+  }
 }
 .wrapper-footer{
   position: fixed;
@@ -77,8 +91,175 @@ nav.navbar{
   left: 0;
   right: 0;
   height: $wrapper-footer-height;
+  color: $light;
+  background-image: url('../img/footer_bg.jpg');
+  background-size: cover;
+  background-position:  center;
+  box-shadow: inset 0 0 0 1000px rgba($primary,.8);
   z-index: $zindex-footer;
+  overflow: hidden;
 }
+//===== abouts =====
+.about_homepage{
+  &--header{
+    position: relative;
+    &_img{
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 100vw;
+      margin-left: -50vw;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    &_title{
+      position: relative;
+      height: 100%;
+      width: 100%;
+    }
+  }
+  &--body{
+    padding-top: 60px;
+  }
+}
+//===== benefits =====
+.benefit{
+  max-width: 20%;
+  &--card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  &--ico{
+    display: flex;
+    width: 120px;
+    height: 120px;
+    padding: 2em;
+    border-radius: 50%;
+    background: $secondary;
+    box-shadow: 1px 2px 4px #C1C1C1;
+    transition: 0.7s all ease;
+    &_svg{
+      transition: 0.7s all ease;
+    }
+  }
+  &--title{
+    min-height: 99.3px;
+    padding: 1rem 0;
+    position: relative;
+    color: $primary;
+    &::after{
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      height: 1px;
+      width: 45%;
+      background: $primary;
+      opacity: 0.5;
+      transform: translateX(-50%);
+      transition: 0.7s all ease;
+    }
+  }
+}
+.benefit--card:hover .benefit{
+  &--ico{
+    background: $primary;
+    box-shadow: 2px 4px 6px #C1C1C1;
+    &_img{
+      filter: invert(100%);
+    }
+  }
+  &--title:after{
+    width: 100%;
+  }
+}
+
+//===== END benefits =====
+// ====== contacts block in footer
+.contact_block{
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  display: flex;
+  z-index: 1035;
+  padding: 0.5rem 0.7rem;
+  background: rgba($white, 0.8);
+  border-radius: $border-radius;
+  transition: 0.7s all ease-in-out;
+  overflow: hidden;
+  &--btn{
+    min-height: 50px;
+    .btn-ico{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 1.4em;
+      width: 1.4em;
+      margin-top: 5px;
+      margin-right: 3px;
+      &_svg{
+        width: 100%;
+        height: 100%;
+        fill: $primary;
+      }
+    }
+    &:hover .btn-ico_svg{
+      fill: $secondary
+    }
+  }
+  .soc_wrap{
+    display: flex;
+    max-width: 0;
+    transition: 0.7s all ease-in-out;
+  }
+  .contacts{
+    padding: 0 0.85rem;
+  }
+  .contact_link{
+    display: block;
+    height: 25px;
+    line-height: 25px;
+  }
+}
+.contact_block.open{
+  .soc_wrap{
+    max-width: 900px;
+  }
+}
+//social-bar
+.socials {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    width: 242px;
+  }
+  &__img{
+    height: 50px;
+    border-radius: $border-radius;
+  }
+}
+//social-bar end
+// ====== contacts block in footer
+
+// ====== general styles ======
+main.site-main{
+  padding-top: 50px;
+}
+.entry-meta{
+  padding: 1rem 0;
+}
+article.post{
+  margin-bottom: 20px;
+  & + .post-navigation{
+    padding-top: 1.5rem;
+  }
+}
+
+// ====== end general styles ======
+
 //===== post listing =====
 .post_card{
   article.post{
