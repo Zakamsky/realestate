@@ -12,7 +12,10 @@
 
 <form action="<?php echo WPP_F::base_url($wp_properties['configuration']['base_slug']); ?>" method="post"
             class="wpp_shortcode_search_form" >
-
+    <button class="close--search_form btn click-opener-js" >
+        <img style='display:block; width:16px;height:16px;'
+             src='data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA/klEQVQ4T6WTjQ0BQRBGnwrQgRKUQAWoAB1QATrQASpABzqgBB2gAvJkJ1nHkbhJLpf9mTc738zUqGi1D/4joAd0gAZwBQ7ADtgU7+eAFrAFbsA6OegspA8IrgMD4BygAOh8BKbJuSwxIUugHZAAnNKBkX+ZkEmCIMANP3PWzHUOCA0zonumoqmJwdYCdPCL6F527WUhxbUAA3reF6BQauA/jyhkBiwyWJwrrEI2BNzhmUrRjLICxiXCPv1+vcC8I/dck5cXVNbApw6B7r9V0K9SHwiwCkJskG/NVNqJAVGPS4LsU2kVzOHSuZlK+jYLeQmjSexMh8fhiml8e90DzrxMEbW0kqYAAAAASUVORK5CYII=' />
+    </button>
         <?php do_action("draw_property_search_form", $args); ?>
 <?php if ($sort_order) { ?>
   <input type="hidden" name="wpp_search[sort_order]" value="<?php echo $sort_order; ?>"/>
@@ -121,31 +124,42 @@ if (is_array($searchable_property_types) && !array_key_exists('property_type', a
         }
         //** End Group Attributes */
         ?>
-          <?php if ('not_a_group' === $this_group) : ?>
-            <li class="wpp_search--btns_block">
-                <button class="btn btn-secondary btn-add-more mr-2 click-opener-js">
-                    <i class="ico btn-ico">
-                        <svg class="ico_svg">
-                            <use xlink:href="#add_more"></use>
-                        </svg>
-                    </i>
-                </button>
-<!--                <input type="submit" class="wpp_search_button submit btn btn-primary"-->
-<!--                       value="--><?php //_e('Search', ud_get_wp_property()->domain) ?><!--"/>-->
-                <button type="submit" class="wpp_search_button btn-submit submit btn btn-primary"
-                        value="<?php _e('Search', ud_get_wp_property()->domain) ?>">
-                    <i class="ico btn-ico">
-                        <svg class="ico_svg">
-                            <use xlink:href="#search"></use>
-                        </svg>
-                    </i>
-                </button>
-            </li>
 
-          <?php endif; ?>
       </ul>
     </li>
   <?php } ?>
-
+    <div class="wpp_search--btns_block">
+        <button class="wpp_search_button btn btn-outline-dark click-opener-js d-inline-block d-lg-none" >
+            <img style='display:block; width:16px;height:16px;'
+                 src='data:image/jpeg;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA/klEQVQ4T6WTjQ0BQRBGnwrQgRKUQAWoAB1QATrQASpABzqgBB2gAvJkJ1nHkbhJLpf9mTc738zUqGi1D/4joAd0gAZwBQ7ADtgU7+eAFrAFbsA6OegspA8IrgMD4BygAOh8BKbJuSwxIUugHZAAnNKBkX+ZkEmCIMANP3PWzHUOCA0zonumoqmJwdYCdPCL6F527WUhxbUAA3reF6BQauA/jyhkBiwyWJwrrEI2BNzhmUrRjLICxiXCPv1+vcC8I/dck5cXVNbApw6B7r9V0K9SHwiwCkJskG/NVNqJAVGPS4LsU2kVzOHSuZlK+jYLeQmjSexMh8fhiml8e90DzrxMEbW0kqYAAAAASUVORK5CYII=' />
+        </button>
+        <button class="wpp_search_button btn btn-secondary btn-add-more mr-2 click-opener-js d-none d-lg-inline-block">
+            <i class="ico btn-ico">
+                <svg class="ico_svg">
+                    <use xlink:href="#add_more"></use>
+                </svg>
+            </i>
+        </button>
+        <!--                <input type="submit" class="wpp_search_button submit btn btn-primary"-->
+        <!--                       value="--><?php //_e('Search', ud_get_wp_property()->domain) ?><!--"/>-->
+        <button type="submit" class="wpp_search_button btn-submit submit btn btn-primary"
+                value="<?php _e('Search', ud_get_wp_property()->domain) ?>">
+            <i class="ico btn-ico">
+                <svg class="ico_svg">
+                    <use xlink:href="#search"></use>
+                </svg>
+            </i>
+        </button>
+    </div>
 </ul>
+<div class="wpp_search--btns_block external">
+    <button class="wpp_search_button btn btn-primary btn-add-more mr-2 click-opener-js">
+        <i class="ico btn-ico">
+            <svg class="ico_svg">
+                <use xlink:href="#search"></use>
+            </svg>
+        </i>
+        <?php _e('Search', ud_get_wp_property()->domain) ?>
+    </button>
+</div>
 </form>

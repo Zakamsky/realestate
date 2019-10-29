@@ -39,7 +39,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                         <?php the_field( 'properties_title', 'option' ); ?>
                     </h2>
 
-                    <?php echo do_shortcode('[property_overview featured=true template=frontpage]'); ?>
+                    <?php echo do_shortcode('[property_overview featured=true template=frontpage pagination=off sorter_type=none hide_count=true]'); ?>
 
                     <!--<div class="wpp_view_all d-flex justify-content-center pt-3">
                         <?php /*echo sprintf(__('<a class="btn btn-secondary" href="%s">view all</a>', ud_get_wp_property()->domain), site_url() . '/' . $wp_properties['configuration']['base_slug']); */?>
@@ -69,7 +69,6 @@ $container = get_theme_mod( 'understrap_container_type' );
                     <div class="about_homepage--body">
                         <?php echo $forhomepage->post_content;?>
                     </div>
-
 
                 </section>
                 <section class="benefits_homepage homepage_block container">

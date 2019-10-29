@@ -13,9 +13,9 @@ get_header();
 $container = get_theme_mod( 'understrap_container_type' );
 ?>
 
-<div class="wrapper main-content-wrapper pt-5 mt-5" id="error-404-wrapper">
+<div class="wrapper main-content-wrapper py-5" id="error-404-wrapper">
 
-	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
+	<div class="py-5 <?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
 		<div class="row">
 

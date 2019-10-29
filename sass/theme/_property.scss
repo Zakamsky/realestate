@@ -2,58 +2,27 @@
 .property_homepage .properties_pagination{
   display: none;
 }
+.wpp_shortcode_search_form{
+  //position: relative;
+  .close--search_form{
+    display: none;
+  }
+}
 .wpp_search_elements{
-  padding: 1em;
-  margin: 0;
-  border-radius: 0;
-  background: rgba(#fff, 0.6);
-  //transition: 1.5s all ease;
-  select.form-control{
-    max-width: 180px;
-  }
-  select.form-control.operation{
-    max-width: 150px;
-  }
+  position: relative;
+  display: none;
+  border-radius: $border-radius;
+  max-width: 970px;
 }
-.wpp_search_properties_widget .wpp_search_elements ul{
-  list-style: none;
-  padding-left: 0;
-}
-.wpp_search_elements,
-.wpp_search_elements ul,
-.wpp_search_elements li,
-.wpp_search_elements ul li{
-  display: flex;
-  flex-wrap: wrap; //???
-}
-.wpp_search_properties_widget .wpp_search_elements li{
-  flex-basis: 100%;
-  margin-bottom: 1em;
-}
-.wpp_search_elements li + li{
-  margin-left: 1.2em;
-}
-.wpp_search_properties_widget .wpp_search_elements .wpp_search_label{
-  margin-bottom: 0;
-  width: unset;
-  vertical-align: middle;
-  line-height: 38px;
-  padding-right: 0.6em;
-}
-.wpp_search_elements .wpp_dash{
-  vertical-align: middle;
-  line-height: 38px;
-  padding-left: 0.6em;
-  padding-right: 0.6em;
-}
-.wpp_search_attribute_wrap{
-  display: flex;
-}
-input.wpp_search_input_field_min,
-input.wpp_search_input_field_max {
-  width: 5.6em;
-}
+
 .wpp_search--btns_block{
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  height: 38px;
+  .wpp_search_button{
+    height: 100%;
+  }
   .btn-ico{
     display: flex;
     align-items: center;
@@ -69,29 +38,96 @@ input.wpp_search_input_field_max {
   .btn-add-more .ico_svg{
     fill: $primary;
   }
+  &.external{
+    bottom: 0;
+    left: 0;
+    right: 0;
+    .wpp_search_button{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      border-radius: 0;
+      margin: 0;
+      .ico{
+        margin-right: 0.3rem;
+        &_svg{
+          fill: $white;
+        }
+      }
+    }
+  }
+}
+.wpp_shortcode_search_form.open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1060;
+  background: rgba($black, 0.8);
+  .close--search_form{
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: transparent;
+    img{
+      filter: invert(0.9);
+    }
+  }
+  .wpp_search--btns_block.external{
+    display: none;
+  }
+  .wpp_search_elements {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin: 0;
+    background: rgba(#fff, 0.6);
+    list-style: none;
+    ul.wpp_search_group{
+      list-style: none;
+      padding: 0;
+    }
+    li.form-group{
+      margin: 0;
+      & + li.form-group{
+        margin-top: 0.5rem;
+      }
+    }
+    .wpp_search_label{
+      margin-bottom: 0.3em;
+    }
 
+    .wpp_search_label_price + .wpp_search_attribute_wrap{
+      display: flex;
+      justify-content: space-between;
+      .form-control{
+        flex: 0 1 46%;
+      }
+      .wpp_dash{
+        padding: 0.5rem;
+      }
+    }
+    .wpp_group_icons,
+    .wpp_group__other{
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      width: 100%;
+      .form-group{
+        flex: 0 1 46%;
+        margin-top: 0.5rem;
+      }
+    }
+  }
 }
 
-  //===js active wp property search filter style====
-.wpp_search_collaps--block{
-  max-height: 0;
-  transition: 0.7s all ease-in-out;
-  overflow: hidden;
-}
-.wpp_search_elements{
-  //max-height: 70px;
-  //overflow: hidden;
-  transition: 0.7s all ease-in-out;
 
-}
-//.wpp_search_elements.open{
-//  max-height: 3000px;
-//}
-.wpp_search_title--block.active~.wpp_search_collaps--block{
-  max-height: 40px;
-  margin-top: 1rem;
-}
-  //===js active wp property search filter style====
 //=====END wp property search filter=====
 //=====wp property card in listing=====
 
@@ -296,6 +332,7 @@ input.wpp_search_input_field_max {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding-bottom: 30px;
     .wpp_feature_list{
       flex: 1 1 20%;
 
@@ -329,4 +366,12 @@ input.wpp_search_input_field_max {
 //list of atributs TEST
 .true-checkbox-image{
   display: none;
+}
+
+// property form
+div.wpcf7{
+  padding-top: 30px;
+}
+.wpcf7-form-control{
+  margin-bottom: 1rem;
 }

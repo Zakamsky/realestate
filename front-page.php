@@ -39,7 +39,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                             <?php the_field( 'properties_title', 'option' ); ?>
                         </h2>
 
-                        <?php echo do_shortcode('[property_overview featured=true template=frontpage]'); ?>
+                        <?php echo do_shortcode('[property_overview featured=true template=frontpage pagination=off sorter_type=none hide_count=true]'); ?>
 
                         <!--<div class="wpp_view_all d-flex justify-content-center pt-3">
                         <?php /*echo sprintf(__('<a class="btn btn-secondary" href="%s">view all</a>', ud_get_wp_property()->domain), site_url() . '/' . $wp_properties['configuration']['base_slug']); */?>
@@ -112,7 +112,10 @@ $container = get_theme_mod( 'understrap_container_type' );
                         <?php if ( have_posts() ) : ?>
 
                             <?php /* Start the Loop */
-                            $args = array( 'posts_per_page' => 5 );
+                            $args = array(
+                                'posts_per_page' => 5, // -1 нужно для отображения всех постов, без разделения по страницам
+                                'post__in'  => get_option( 'sticky_posts' ), // например Array ( [0] => 54 [1] => 1 )
+                            );
                             $query = new WP_Query( $args );
                             ?>
 
@@ -129,7 +132,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                                     $wp_it_num += 1;
                                     ?>
 
-                                <?php endwhile; ?>
+                                <?php endwhile; wp_reset_postdata(); ?>
                             </div>
                         <?php else : ?>
 

@@ -34,3 +34,11 @@ foreach ( $understrap_includes as $file ) {
 	}
 	require_once $filepath;
 }
+
+add_action( 'pre_get_posts', 'turn_off_sticky_on_homepage' );
+
+function turn_off_sticky_on_homepage( $query ) {
+    if ( !is_admin() && $query->is_main_query() ) {
+        $query->set( 'ignore_sticky_posts', true );
+    }
+}

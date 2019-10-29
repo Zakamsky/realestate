@@ -2,7 +2,7 @@
 
 // header-fixed size for avoid cover scrollbar
 jQuery( document ).ready(function ($) {
-
+//parallax header correction
     let parallaxWidth = $('.parallax').prop("clientWidth");
     $('#wrapper-navbar').width(parallaxWidth);
 
@@ -10,7 +10,7 @@ jQuery( document ).ready(function ($) {
         let parallaxWidth = $('.parallax').prop("clientWidth");
         $('#wrapper-navbar').width(parallaxWidth)
     });
-
+// slider featured property
     $('.wp_property_slider-js').slick({
         dots: true,
         infinite: true,
@@ -37,13 +37,24 @@ jQuery( document ).ready(function ($) {
             }
         ]
     });
-
+//property search filter
     $('.click-opener-js').click(function () {
         event.preventDefault();
-       $('.wpp_search_title--block').toggleClass('active')
-       $('.wpp_search_elements').toggleClass('open')
+        if ($(window).width() < 992) {
+            if ( $('.wpp_search_title--block').hasClass('active')){
+                $('.wpp_search_title--block').removeClass('active');
+            }
+            $('.wpp_shortcode_search_form').toggleClass('open');
+        }else{
+            if ( $('.wpp_shortcode_search_form').hasClass('open')){
+                $('.wpp_shortcode_search_form').removeClass('open');
+            }
+            $('.wpp_search_title--block').toggleClass('active');
+        }
+
     });
 
+// contacts block
     $('.contact_block--btn').click(function () {
         $('.contact_block').toggleClass('open')
     })

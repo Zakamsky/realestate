@@ -31,7 +31,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                             <?php echo get_bloginfo('description'); ?>
                         </div>
                         <div class="site-info-copyright">
-                            <?php echo get_bloginfo('name'); ?> (C) <?php echo date('Y'); ?>
+                            <?php echo get_bloginfo('name'); ?> &copy; 2015 - <?php echo date('Y'); ?>
                         </div>
 					</div><!-- .site-info -->
                     <?php get_template_part( 'sidebar-templates/sidebar', 'footerfull' ); ?>
@@ -58,29 +58,27 @@ $container = get_theme_mod( 'understrap_container_type' );
         </i>
     </button>
 
-    <div class="soc_wrap">
-        <div class="contacts">
-            <a class="contact_link" href="tel:<?php the_field( 'phone_code', 'option' ); ?>" class="phone"><?php the_field( 'phone', 'option' ); ?></a>
-            <a class="contact_link" href="mailto:<?php the_field( 'email', 'option' ); ?>" class="email"><?php the_field( 'email', 'option' ); ?></a>
-        </div>
-        <div class="socials">
+    <div class="contact_block--contacts">
+        <a class="contact_link" href="tel:<?php the_field( 'phone_code', 'option' ); ?>" class="phone"><?php the_field( 'phone', 'option' ); ?></a>
+        <a class="contact_link" href="mailto:<?php the_field( 'email', 'option' ); ?>" class="email"><?php the_field( 'email', 'option' ); ?></a>
+    </div>
+    <div class="contact_block--socials">
 
-            <?php if( have_rows('social', 'option') ): ?>
-                <div class="socials__list">
-                    <?php while( have_rows('social', 'option') ): the_row();
-                        // vars
-                        $icon = get_sub_field('icon');
-                        $url = get_sub_field('url');
+        <?php if( have_rows('social', 'option') ): ?>
 
-                        ?>
-                        <a href="<?php echo $url; ?>" target="_blank" rel="noopener">
-                            <img class="socials__img" src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt'] ?>" />
-                        </a>
-                    <?php endwhile; ?>
-                </div>
-            <?php endif; ?>
+                <?php while( have_rows('social', 'option') ): the_row();
+                    // vars
+                    $icon = get_sub_field('icon');
+                    $url = get_sub_field('url');
 
-        </div>
+                    ?>
+                    <a href="<?php echo $url; ?>" target="_blank" rel="noopener">
+                        <img class="contact_block--socials__img" src="<?php echo $icon['url']; ?>" alt="<?php echo $icon['alt'] ?>" />
+                    </a>
+                <?php endwhile; ?>
+
+        <?php endif; ?>
+
     </div>
 
 </div>
@@ -251,7 +249,6 @@ $container = get_theme_mod( 'understrap_container_type' );
     </symbol>
 </svg>
 <?php wp_footer(); ?>
-
 
 <script>
     var $ = jQuery.noConflict ();

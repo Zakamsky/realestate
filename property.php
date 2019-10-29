@@ -141,7 +141,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         ?>
 
         <?php
-         $shortcode_args = "[property_overview template=frontpage sorter_type=none hide_count=true operation=". $post->operation ." property_type=". $post->property_type." strict_search=true]";
+         $shortcode_args = "[property_overview template=frontpage pagination=off sorter_type=none hide_count=true operation=". $post->operation ." property_type=". $post->property_type." strict_search=true]";
          echo do_shortcode("$shortcode_args");
          ?>
 

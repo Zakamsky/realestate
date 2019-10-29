@@ -9,6 +9,12 @@
   height: $wrapper-navbar-height;
   z-index: $zindex-navbar;
 }
+.collapse{
+  transition: $property-card-transition;
+}
+.collapse.show{
+  box-shadow: inset 0 0 0 500px rgba($black, 0.6), 0 -50px 0 60px rgba($black, 0.6);
+}
 nav.navbar{
   background-color: rgba(0,0,0, 0.5);
   border-bottom: 1px solid rgba($light, 0.2);
@@ -25,7 +31,7 @@ nav.navbar{
   //padding-top: $wrapper-navbar-height;
   &--img{
     width: 100%;
-    height: 100%;
+    height: 100% !important;
     object-fit: cover;
     object-position: center;
   }
@@ -35,6 +41,8 @@ nav.navbar{
     align-items: center;
   }
   &--title{
+    padding: 1rem;
+    text-align: center;
     color: #fff;
     text-shadow: 1px 2px 4px #000;
   }
@@ -124,8 +132,11 @@ nav.navbar{
   }
 }
 //===== benefits =====
+.benefits_homepage>.row {
+  flex-wrap: wrap;
+}
 .benefit{
-  max-width: 20%;
+  max-width: 90%;
   &--card{
     display: flex;
     flex-direction: column;
@@ -163,6 +174,9 @@ nav.navbar{
       transition: 0.7s all ease;
     }
   }
+  &--text{
+    margin-bottom: 46px;
+  }
 }
 .benefit--card:hover .benefit{
   &--ico{
@@ -182,24 +196,32 @@ nav.navbar{
 .contact_block{
   position: fixed;
   right: 1rem;
-  bottom: 1rem;
+  bottom: 0;
   display: flex;
+  flex-wrap: wrap;
   z-index: 1035;
-  padding: 0.5rem 0.7rem;
+  padding: 6px;
+  max-width: 54px;
+  max-height: 54px;
   background: rgba($white, 0.8);
   border-radius: $border-radius;
   transition: 0.7s all ease-in-out;
   overflow: hidden;
   &--btn{
-    min-height: 50px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+    max-height: 42px;//mob
+    max-width: 42px;
+    padding: 0; //mobile
+    z-index: 1036;
     .btn-ico{
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 1.4em;
-      width: 1.4em;
-      margin-top: 5px;
-      margin-right: 3px;
+      height: 40px;
+      width: 40px;
+      padding: 7px 7px 3px 3px;
       &_svg{
         width: 100%;
         height: 100%;
@@ -210,37 +232,41 @@ nav.navbar{
       fill: $secondary
     }
   }
-  .soc_wrap{
-    display: flex;
-    max-width: 0;
+  &--contacts{
+    padding-left: 70px;
+    opacity: 0;
     transition: 0.7s all ease-in-out;
-  }
-  .contacts{
-    padding: 0 0.85rem;
+    margin-bottom: 12px;
   }
   .contact_link{
     display: block;
     height: 25px;
     line-height: 25px;
   }
-}
-.contact_block.open{
-  .soc_wrap{
-    max-width: 900px;
-  }
-}
-//social-bar
-.socials {
-  &__list {
+  &--socials {
     display: flex;
     justify-content: space-between;
-    width: 242px;
+    width: 100%;
+    opacity: 0;
+    transition: 0.7s all ease-in-out;
+    &__img{
+      height: 50px;
+      border-radius: $border-radius;
+    }
   }
-  &__img{
-    height: 50px;
-    border-radius: $border-radius;
+  &.open{
+      max-width: 288px;
+      max-height: 120px
+
+  }
+  &.open &--contacts,
+  &.open &--socials{
+    opacity: 1;
   }
 }
+
+
+
 //social-bar end
 // ====== contacts block in footer
 
@@ -255,6 +281,20 @@ article.post{
   margin-bottom: 20px;
   & + .post-navigation{
     padding-top: 1.5rem;
+    .nav-links{
+      flex-wrap: nowrap;
+      .nav-previous,
+      .nav-next{
+        //flex: 0 1 50%;
+        max-width: 50%;
+      }
+      .nav-previous{
+        padding-right: .5rem;
+      }
+      .nav-next{
+        padding-left: .5rem;
+      }
+    }
   }
 }
 
@@ -310,11 +350,13 @@ article.post{
 }
 //===== ENDpost listing =====
 //===== parallax =====
+
 .parallax {
   perspective: 1px;
   height: 100vh;
   overflow-x: hidden;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   //transform-style: preserve-3d;
 }
 .parallax__group {
@@ -331,13 +373,16 @@ article.post{
 }
 
 .parallax__layer--base {
-  top: -100%;
-  transform: translateZ(-1px) scale(2.05);
+  top: 0;
+  transform: translateZ(-1px) translateY(-40%) scale(2.05);
 }
 
 .parallax__layer--back {
   top: -200%;
   transform: translateZ(-2px) scale(3.05);
+}
+.pagination{
+  justify-content: center;
 }
 @import "property";
 @import "../assets/slick";

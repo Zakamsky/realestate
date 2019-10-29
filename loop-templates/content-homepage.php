@@ -17,7 +17,11 @@ global $wp_it_num;
 
         <header class="entry_header">
 
-            <?php echo get_the_post_thumbnail( $post->ID, 'large', array('class' => 'entry_header--bg_img') ); ?>
+            <?php if (has_post_thumbnail($post->ID)): ?>
+                <?php echo get_the_post_thumbnail( $post->ID, 'large', array('class' => 'entry_header--bg_img') ); ?>
+            <?php else: ?>
+                <img src="<?php echo ARS_IMG_DIR; ?>/post-card-bg.jpg " alt="header background" class="entry_header--bg_img">
+            <?php endif; ?>
 
             <?php the_title( '<h2 class="entry_header--title text-decoration-none">', '</h2>' ); ?>
 
