@@ -40,8 +40,8 @@ if ( ! function_exists( 'understrap_scripts' ) ) {
         wp_deregister_style('wpp-jquery-fancybox-css');
 //        wp_deregister_script('wpp-jquery-address');
 
-        wp_deregister_script('jquery-ui-slider');
-        wp_deregister_script('jquery-ui-mouse');
+//        wp_deregister_script('jquery-ui-slider');
+//        wp_deregister_script('jquery-ui-mouse');
 //        wp_deregister_script('jquery-ui-widget');
 
 		wp_enqueue_script( 'fancybox-scripts', ARS_JS_DIR . '/jquery.fancybox.min.js', array(jquery), null, true );

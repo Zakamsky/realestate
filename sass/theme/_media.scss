@@ -64,7 +64,7 @@
       max-width: 150px;
     }
   }
-  .wpp_search_properties_widget .wpp_search_elements ul{
+  .wpp_search_elements ul{
     list-style: none;
     padding-left: 0;
   }
@@ -75,14 +75,14 @@
     display: flex;
     flex-wrap: wrap; //???
   }
-  .wpp_search_properties_widget .wpp_search_elements li{
+  .wpp_search_elements li{
     flex-basis: 100%;
     margin-bottom: 1em;
   }
   .wpp_search_elements li + li{
     margin-left: 1.2em;
   }
-  .wpp_search_properties_widget .wpp_search_elements .wpp_search_label{
+  .wpp_search_elements .wpp_search_label{
     margin-bottom: 0;
     width: unset;
     vertical-align: middle;
@@ -102,7 +102,7 @@
   input.wpp_search_input_field_max {
     width: 5.6em;
   }
-  .wpp_search_properties_widget .wpp_search_elements li{
+  .wpp_search_elements li{
     flex-basis: auto;
     margin-bottom: 0;
   }
