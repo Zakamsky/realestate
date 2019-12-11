@@ -82,8 +82,8 @@ if (have_properties()) {
                     <div class="property__card-price"><?php echo $property['price']; ?></div>
                     <div class="property__card-text">
                         <?php
-                        $post_content_kses = wp_kses($property['post_content'], '');
-                        $short_description = substr($post_content_kses, 0, 120);
+                        $post_content_kses = wp_kses($property['post_content'], 'default');
+                        $short_description = substr($post_content_kses, 0, 200);
                         echo $short_description, '...'?>
                     </div>
 

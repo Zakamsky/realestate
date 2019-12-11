@@ -27,7 +27,7 @@ nav.navbar{
   }
 }
 .entry_header{
-  height: 25rem;
+  height: 56.25vw;
   //padding-top: $wrapper-navbar-height;
   &--img{
     width: 100%;
@@ -349,43 +349,21 @@ article.post{
   }
 }
 //===== ENDpost listing =====
-//===== parallax =====
 
-.parallax {
-  perspective: 1px;
-  height: 100vh;
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  //transform-style: preserve-3d;
-}
-.parallax__group {
-  position: relative;
-  transform-style: preserve-3d;
-  overflow: hidden;
-}
-.parallax__layer {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-}
-
-.parallax__layer--base {
-  top: 0;
-  transform: translateZ(-1px) translateY(-40%) scale(2.05);
-}
-
-.parallax__layer--back {
-  top: -200%;
-  transform: translateZ(-2px) scale(3.05);
-}
 .pagination{
   justify-content: center;
 }
+.wpml-ls-current-language .wpml-ls-flag{
+  opacity: 0.7;
+  box-shadow: 0 0 2px 2px rgba($dark, .8);
+}
+.wpml-ls-flag:hover{
+  opacity: 0.8;
+}
+//@import "parallax_css";
+@import "parallax_js";
 @import "property";
 @import "../assets/slick";
-@import "../assets/slick";
+//@import "../assets/slick";
 @import "../assets/slick-theme";
 @import "media";

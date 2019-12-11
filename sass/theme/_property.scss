@@ -400,7 +400,7 @@ div.wpcf7{
 .wpp_property_overview_shortcode .properties_pagination .pagination-numeric ul.property-overview-navigation li {
   list-style: none;
   display: inline-block;
-  margin: 0 6px 0 0;
+  margin: 0;
 }
 .wpp_property_overview_shortcode .properties_pagination .pagination-numeric ul.property-overview-navigation li:last-child {
   margin-right: 0;
@@ -424,7 +424,9 @@ body.wpp_is_mobile .wpp_property_overview_shortcode .properties_pagination .pagi
 }
 .wpp_property_overview_shortcode .properties_pagination .pagination-numeric ul.property-overview-navigation li a:hover,
 .wpp_property_overview_shortcode .properties_pagination .pagination-numeric ul.property-overview-navigation li a:active {
-  border-color: #000;
+  color: #2f1117;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
 }
 body.wpp_is_mobile .wpp_property_overview_shortcode .properties_pagination .pagination-numeric ul.property-overview-navigation li.pages ul li.page {
   display: none;
@@ -445,3 +447,42 @@ body.wpp_is_mobile .wpp_property_overview_shortcode .properties_pagination .pagi
     margin-left: auto;
   }
 }
+
+/*=== paginations ===*/
+.properties_pagination .pagination-numeric{
+  ul.property-overview-navigation,
+  ul.property-overview-navigation ul{
+    padding: 0;
+    li>a.btn.button{
+      margin: 0;
+      border-radius: 0 ;
+      color: $primary;
+      position: relative;
+      display: block;
+      padding: .5rem .75rem;
+      margin-left: -1px;
+      line-height: 1.25;
+    }
+    li.current-page>a.btn.button{
+      color: $white;
+      background: $primary;
+      border-color: $primary;
+      cursor: none;
+    }
+
+  }
+  .property-overview-navigation{
+    &>li:first-child>a.btn.button{
+      margin: 0;
+      border-top-left-radius: 0.25rem ;
+      border-bottom-left-radius: 0.25rem ;
+    }
+    &>li:last-child>a.btn.button{
+      margin: 0;
+      border-top-right-radius: 0.25rem ;
+      border-bottom-right-radius: 0.25rem ;
+    }
+  }
+}
+
+

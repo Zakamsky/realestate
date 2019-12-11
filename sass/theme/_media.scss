@@ -43,9 +43,12 @@
   .collapse.show{
     box-shadow: none;
   }
-  .parallax__layer--base {
-    transform: translateZ(-1px) translateY(-50%) scale(2.05);
+  .entry_header {
+    height: 40vw;
   }
+  /*.parallax__layer--base {
+    transform: translateZ(-1px) translateY(-50%) scale(2.05);
+  }*/
 }
 
 // Large devices (desktops, 992px and up)
@@ -132,8 +135,9 @@
 }
 
 // Extra large devices (large desktops, 1200px and up)
+/*
 @media (min-width: 1200px) {
   .parallax__layer--base {
     transform: translateZ(-1px) translateY(-60%) scale(2.05);
   }
-}
+}*/
