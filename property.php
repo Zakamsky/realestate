@@ -46,9 +46,6 @@ $container = get_theme_mod( 'understrap_container_type' );
     <?php //the_tagline(); ?>
 
 
-    <!--        todo: этот код в файле на рабочем столе =>  --><?php //print_r($wp_properties['property_stats']['referencia']); ?>
-
-
     <div id="content" class="<?php echo esc_attr( $container ); ?>" tabindex="-1" role="main">
         <div class="row">
             <main class="col single_property site-main" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
@@ -56,7 +53,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                 <div class="<?php wpp_css('property::entry_content', "entry-content"); ?>">
                   <h4 class="single_property--ref_line">
-                      <?php echo $wp_properties['property_stats']['referencia']; ?>:&nbsp;<?php echo $post->referencia; ?> | <?php echo $post->property_type_label; ?> | <?php echo $post->operation; ?> | <?php echo $post->town; ?> | <?php echo $post->region; ?>
+                      <?php echo $wp_properties['property_stats']['referencia']; ?>:&nbsp;<?php echo $post->referencia; ?> | <?php echo $post->property_type_label; ?> | <?php echo $post->operation; ?> | <?php echo $post->town; ?><?php if(isset($post->region)) echo ' | '.$post->region; ?>
                   </h4>
                   <h3 class="single_property--price">
                       <?php echo $wp_properties['property_stats']['price']; ?>:&nbsp;<?php echo $post->price; ?>

@@ -87,10 +87,10 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                             <!--                                --><?php
                             //pass in the max_num_pages, which is total pages ?>
-                            <div class="pagenav d-flex justify-content-between">
-                                <div class="btn btn-outline-primary"><?php previous_posts_link('Previous', $query->max_num_pages) ?></div>
-                                <div class="btn btn-outline-primary"><?php next_posts_link('Next', $query->max_num_pages) ?></div>
-                            </div>
+<!--                            <div class="pagenav d-flex justify-content-between">-->
+<!--                                <div class="btn btn-outline-primary">--><?php //previous_posts_link('Previous', $query->max_num_pages) ?><!--</div>-->
+<!--                                <div class="btn btn-outline-primary">--><?php //next_posts_link('Next', $query->max_num_pages) ?><!--</div>-->
+<!--                            </div>-->
                         <?php else : ?>
 
                             <?php get_template_part( 'loop-templates/content', 'none' ); ?>
@@ -102,7 +102,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                     </main><!-- #main -->
 
-                    <!-- The pagination component -->
+                    <!-- The pagination component aqui-->
                     <?php understrap_pagination(); ?>
 
                     <!-- Do the right sidebar check -->

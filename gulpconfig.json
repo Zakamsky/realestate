@@ -1,7 +1,7 @@
 {
 	"browserSyncOptions": {
 		"proxy": "http://ann-underwp.loc/",
-		"notify": false
+		"notify": true
 	},
 	"browserSyncWatchFiles": ["./css/*.min.css", "./js/*.min.js", "./**/*.php"],
 	"paths": {

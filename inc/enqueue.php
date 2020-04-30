@@ -44,8 +44,8 @@ if ( ! function_exists( 'understrap_scripts' ) ) {
 //        wp_deregister_script('jquery-ui-mouse');
 //        wp_deregister_script('jquery-ui-widget');
 
-		wp_enqueue_script( 'fancybox-scripts', ARS_JS_DIR . '/jquery.fancybox.min.js', array(jquery), null, true );
-		wp_enqueue_script( 'slick-scripts', ARS_JS_DIR . '/slick.min.js', array(jquery), null, true );
+		wp_enqueue_script( 'fancybox-scripts', ARS_JS_DIR . '/jquery.fancybox.min.js', array('jquery'), null, true );
+		wp_enqueue_script( 'slick-scripts', ARS_JS_DIR . '/slick.min.js', array('jquery'), null, true );
 		wp_enqueue_script( 'wow-scripts', ARS_JS_DIR . '/wow.js', array(), null, true );
 
 	}

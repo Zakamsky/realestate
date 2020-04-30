@@ -84,7 +84,7 @@ if (have_properties()) {
                         <div class="property__card-text">
                             <?php
                             $post_content_kses = wp_kses($property['post_content'], '');
-                            $short_description = substr($post_content_kses, 0, 120);
+                            $short_description = substr($post_content_kses, 0, 200);
                             echo $short_description, '...'?>
                         </div>
 

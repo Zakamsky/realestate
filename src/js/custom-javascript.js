@@ -1,15 +1,35 @@
-// all your custom scripts here:
+/*parallax*/
+function parallax() {
+    window.onscroll = function() {
+        let parallax_background = document.querySelector('.parallax__layer--back'),
+            parallax_foreground = document.querySelector('.parallax__layer--base');
 
-// header-fixed size for avoid cover scrollbar
+        let speed = 3,
+            speed2 = 2;
+
+        parallax_background.style.top = (window.pageYOffset / speed) + 'px';
+        parallax_foreground.style.top = (window.pageYOffset / speed2) + 'px';
+
+
+    }
+}
+
+
 jQuery( document ).ready(function ($) {
-//parallax header correction
-    let parallaxWidth = $('.parallax').prop("clientWidth");
-    $('#wrapper-navbar').width(parallaxWidth);
+    //parallax
+    if($('.parallax__layer--back').length){
+        if ($(window).width() >= 768){
+            parallax();
+        }else{
+            $(window).resize( function(){
+                if ($(window).width() >= 768) {
+                    parallax();
+                }
+            });
+        }
+    }
 
-    $( window ).resize(function(){
-        let parallaxWidth = $('.parallax').prop("clientWidth");
-        $('#wrapper-navbar').width(parallaxWidth)
-    });
+    /*parallax end*/
 // slider featured property
     $('.wp_property_slider-js').slick({
         dots: true,
