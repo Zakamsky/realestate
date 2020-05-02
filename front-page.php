@@ -34,6 +34,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                 <?php get_template_part( 'global-templates/left-sidebar-check' ); ?>
 
                 <main class="site-main" id="main">
+
                     <section class="property_homepage homepage_block">
                         <h2 class="h1 hompage_header">
                             <?php the_field( 'properties_title', 'option' ); ?>
@@ -41,10 +42,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                         <?php echo do_shortcode('[property_overview featured=true template=frontpage pagination=off sorter_type=none hide_count=true]'); ?>
 
-                        <!--<div class="wpp_view_all d-flex justify-content-center pt-3">
-                        <?php /*echo sprintf(__('<a class="btn btn-secondary" href="%s">view all</a>', ud_get_wp_property()->domain), site_url() . '/' . $wp_properties['configuration']['base_slug']); */?>
-                    </div>-->
-                    </section>
+                    </section> <!-- .property_homepage -->
+
                     <section class="about_homepage homepage_block">
                         <!-- forhomepage -->
                         <?php $forhomepage = get_page_by_path( 'forhomepage' );?>
@@ -71,7 +70,8 @@ $container = get_theme_mod( 'understrap_container_type' );
                         </div>
 
 
-                    </section>
+                    </section> <!-- .about_homepage -->
+
                     <section class="benefits_homepage homepage_block container">
                         <h2 class="h1 hompage_header">
                             <?php the_field( 'benefits_title', 'option' ); ?>
@@ -88,7 +88,7 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                                     ?>
                                     <div class="col benefit">
-                                        <div class="benefit--card wow bounceInUp"
+                                        <div class="benefit--card wow bounceIn"
                                             <?php if (($benef_i % 2) == 0) { echo 'data-wow-delay="0.5s"' ;}; ?> >
                                             <i class="benefit--ico">
                                                 <img class="benefit--ico_img" src="<?php echo $image['url']; ?>" alt="<?php echo $image['alt'] ?>" />
@@ -103,8 +103,12 @@ $container = get_theme_mod( 'understrap_container_type' );
                                     <?php $benef_i += 1; endwhile; ?>
                             </div>
                         <?php endif; ?>
-                    </section>
-                    <section class="newpost_homepage homepage_block">
+                    </section> <!-- .benefits_homepage -->
+
+					<!-- Do the reviews with check -->
+					<?php get_template_part( 'loop-templates/reviews' ); ?>
+
+					<section class="newpost_homepage homepage_block">
                         <h2 class="h1 hompage_header">
                             <?php the_field( 'posts_title', 'option' ); ?>
                         </h2>
@@ -139,7 +143,7 @@ $container = get_theme_mod( 'understrap_container_type' );
                             <?php get_template_part( 'loop-templates/content', 'none' ); ?>
 
                         <?php endif; ?>
-                    </section>
+                    </section> <!-- .newpost_homepage -->
                 </main><!-- #main -->
 
 
