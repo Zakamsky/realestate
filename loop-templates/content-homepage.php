@@ -10,8 +10,8 @@ defined( 'ABSPATH' ) || exit;
 global $wp_it_num;
 
 ?>
-<div class="post_card <?php if($wp_it_num > 2){echo 'col-md-6 col-lg-4 wow bounceInUp';}else{echo 'col-md-6';}; ?>" data-wow-delay="0.<?php echo $wp_it_num; ?>1s">
-<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
+<div class="post_card wow <?php if($wp_it_num > 2){echo 'col-md-6 col-lg-4 bounceIn';}elseif($wp_it_num === 1){echo 'col-md-6 bounceInLeft';}elseif($wp_it_num === 2){echo 'col-md-6 bounceInRight';}; ?>" data-wow-delay="0.1<?php echo $wp_it_num; ?>s">
+<article <?php post_class(); ?> id="post-<?php the_ID(); ?>" >
 <!--    content.php      -->
     <a class="post_card--link" href="<?php echo esc_url( get_permalink() ) ?>" rel="bookmark"> <!--esc_url( get_permalink() ) )-->
 

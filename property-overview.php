@@ -27,6 +27,48 @@
 <?php
 if (have_properties()) {
 //  $thumbnail_dimentions = WPP_F::get_image_dimensions($wpp_query['thumbnail_size']);
+$property_condition = array(
+    "ru" => array(
+        "Новостройка" => "Новостройка",
+        "Хорошее состояние" => "Хорошее состояние",
+        "Под ремонт" => "Под ремонт",
+    ),
+    "en" => array(
+        "Новостройка" => "New construction",
+        "Хорошее состояние" => "Good condition",
+        "Под ремонт" => "Under repair",
+    ),
+    "es" => array(
+        "Новостройка" => "obra nueva",
+        "Хорошее состояние" => "buen estado",
+        "Под ремонт" => "reformar",
+    ),
+);
+$property_operation = array(
+    "ru" => array(
+        "Аренда" => "Аренда",
+        "Продажа" => "Продажа",
+        "Туристическая аренда" => "Туристическая аренда",
+    ),
+    "en" => array(
+        "Аренда" => "For rent",
+        "Продажа" => "For sale",
+        "Туристическая аренда" => "For tourist rent",
+    ),
+    "es" => array(
+        "Аренда" => "Alquiler",
+        "Продажа" => "Venta",
+        "Туристическая аренда" => "Alquiler turístico",
+    ),
+);
+$current_lang = "ru";
+
+if(ICL_LANGUAGE_CODE == 'en'){
+    $current_lang = "en";
+};
+if(ICL_LANGUAGE_CODE == 'es'){
+    $current_lang = "es";
+};
 ?>
 <div class="<?php wpp_css('property_overview::row_view', "wpp_row_view wpp_property_view_result"); ?>">
 <div class="<?php wpp_css('property_overview::all_properties', "all-properties"); ?> row">
@@ -49,7 +91,10 @@ if (have_properties()) {
                 <a class="property__card-description" href="<?php echo $property['permalink']; ?>" <?php echo $in_new_window; ?>>
                     <ul class="property__card-flags">
                         <li class="property__card-flags_item operation">
-                            <span><?php echo $property['operation']; ?></span>
+                            <span><?php
+                                $operation = $property['operation'];
+                                echo $property_operation[$current_lang][$operation];
+                                ?></span>
                         </li>
                         <?php if (!empty($property['tagline'])): ?>
                             <li class="property__card-flags_item tagline">
@@ -118,27 +163,10 @@ if (have_properties()) {
                                     <use xlink:href="#condition"></use>
                                 </svg>
                             </i>
-                            <?php echo $property['condition']; ?>
+                            <?php $condition = $property['condition']; echo $property_condition[$current_lang][$condition]; ?>
                         </div>
                     </div>
                 </a>
-
-                <!-- --><?php
-                /*                      if( is_array($wpp_query[ 'attributes' ]) ){
-                                          echo '<ul class="attributes">';
-                                        foreach ($wpp_query[ 'attributes' ] as $attribute){
-                                          if(!empty($property[$attribute])){
-                                            $attribute_data = WPP_F::get_attribute_data($attribute);
-                                            $data = $property[$attribute];
-                                            if(is_array($data)){
-                                              $data = implode( ', ', $data);
-                                            }
-                                            echo "<li class='property_attributes property_$attribute'><span class='title'>{$attribute_data['title']}:</span> {$property[$attribute]}</li>";
-                                          }
-                                        }
-                                        echo '</ul>';
-                                      }
-                                      */?>
 
             </div><?php // .property__card-item  ?>
         </div> <!-- .property__card -->

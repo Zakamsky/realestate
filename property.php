@@ -23,10 +23,64 @@ defined( 'ABSPATH' ) || exit;
 
 get_header();
 $container = get_theme_mod( 'understrap_container_type' );
+
+$property_type = array(
+    "ru" => array(
+        "apartment" => "Квартиры и апартаменты",
+        "house" => "Дома и виллы",
+        "commercial" => "Офисы и коммерческие помещения",
+        "land" => "Земли и участки",
+        "parking" => "Гаражи и паркинг",
+        "building" => "Здания"
+    ),
+    "en" => array(
+        "apartment" => "Apartment",
+        "house" => "Houses",
+        "commercial" => "Commercial",
+        "land" => "Lands",
+        "parking" => "Parkings",
+        "building" => "Buildings"
+    ),
+    "es" => array(
+        "apartment" => "Apartamentos",
+        "house" => "Villas",
+        "commercial" => "Propiedades Comerciales",
+        "land" => "Lands",
+        "parking" => "Garajes",
+        "building" => "Edificios"
+    ),
+);
+$property_operation = array(
+    "ru" => array(
+        "Аренда" => "Аренда",
+        "Продажа" => "Продажа",
+        "Туристическая аренда" => "Туристическая аренда",
+    ),
+    "en" => array(
+        "Аренда" => "For rent",
+        "Продажа" => "For sale",
+        "Туристическая аренда" => "For tourist rent",
+    ),
+    "es" => array(
+        "Аренда" => "Alquiler",
+        "Продажа" => "Venta",
+        "Туристическая аренда" => "Alquiler turístico",
+    ),
+);
+
+$current_lang = "ru";
+if(ICL_LANGUAGE_CODE == 'en'){
+    $current_lang = "en";
+};
+if(ICL_LANGUAGE_CODE == 'es'){
+    $current_lang = "es";
+};
+
 ?>
 
 <div class="parallax">
 <?php the_post(); ?>
+    <!-- <?php //var_dump($post); ?> todo: delte this-->
 <div id="container" class="wrapper main-content-wrapper <?php wpp_css('property::container', array((!empty($post->property_type) ? $post->property_type . "_container" : ""))); ?>">
 
     <header class="entry_header parallax__group">
@@ -52,12 +106,14 @@ $container = get_theme_mod( 'understrap_container_type' );
 
 
                 <div class="<?php wpp_css('property::entry_content', "entry-content"); ?>">
-                  <h4 class="single_property--ref_line">
-                      <?php echo $wp_properties['property_stats']['referencia']; ?>:&nbsp;<?php echo $post->referencia; ?> | <?php echo $post->property_type_label; ?> | <?php echo $post->operation; ?> | <?php echo $post->town; ?><?php if(isset($post->region)) echo ' | '.$post->region; ?>
+
+                  <h4 class="single_property--ref_line"> <?php $type = $post->property_type; $operation = $post->operation; ?>
+                      <?php echo $wp_properties['property_stats']['referencia']; ?>:&nbsp;<?php echo $post->referencia; ?> | <?php echo $property_type[$current_lang][$type]; ?> | <?php echo $property_operation[$current_lang][$operation]; ?> | <?php @draw_stats("display=value_only&include=town,region"); ?>
                   </h4>
-                  <h3 class="single_property--price">
-                      <?php echo $wp_properties['property_stats']['price']; ?>:&nbsp;<?php echo $post->price; ?>
-                  </h3>
+
+                    <h3 class="single_property--price">
+                      <?php @draw_stats("display=plain_list&include=price"); ?>
+                    </h3>
                 <div class="<?php wpp_css('property::the_content', "wpp_the_content single_property--content"); ?>">
                     <?php @the_content(); ?>
                 </div>
@@ -92,12 +148,16 @@ $container = get_theme_mod( 'understrap_container_type' );
                               <use xlink:href="#condition"></use>
                           </svg>
                       </i>
-                      <?php echo $post->condition; ?>
+                      <?php @draw_stats("display=value_only&include=condition"); ?>
                     </div>
                 </div>
 
                 <div class="single_property--additional_info">
+                    <h5 class="add_info_header">
+                        <?php echo __( 'Additional Information', 'realestate-vlc'); ?>
+                    </h5>
                     <?php @draw_stats("display=plain_list&sort_by_groups=true&include=orientation,to_airport,to_sea,view"); ?>
+<!--                    --><?php //@draw_stats("sort_by_groups=true&include=orientation,to_airport,to_sea,view"); ?>
                 </div>
                 <div class="single_property--stats_block">
                     <?php @draw_stats("sort_by_groups=true&exclude=operation,price,bedroom,bathroom,condition,area,tagline,referencia,town,region,orientation,to_airport,to_sea,view"); ?>
@@ -122,19 +182,26 @@ $container = get_theme_mod( 'understrap_container_type' );
 
             <?php
             // Primary property-type sidebar.
-            if ( isset( $post->property_type ) && is_active_sidebar( "wpp_sidebar_" . $post->property_type ) ) : ?>
-
-                <div id="primary" class="<?php wpp_css('property::primary', "widget-area wpp_sidebar_{$post->property_type}"); ?>" role="complementary">
-                    <ul class="">
-                        <?php dynamic_sidebar( "wpp_sidebar_" . $post->property_type ); ?>
-                    </ul>
-                </div><!-- #primary .widget-area -->
-
-            <?php endif; ?>
+//            if ( isset( $post->property_type ) && is_active_sidebar( "wpp_sidebar_" . $post->property_type ) ) : ?>
+<!---->
+<!--                <div id="primary" class="--><?php //wpp_css('property::primary', "widget-area wpp_sidebar_{$post->property_type}"); ?><!--" role="complementary">-->
+<!--                    <ul class="">-->
+<!--                        --><?php //dynamic_sidebar( "wpp_sidebar_" . $post->property_type ); ?>
+<!--                    </ul>-->
+<!--                </div>--><!-- #primary .widget-area -->
+<!---->
+<!--            --><?php //endif; ?>
 
         </div><!-- .row -->
-        <?php //[contact-form-7 id="133" title="Контактная форма"]
-        echo do_shortcode("[contact-form-7 id=\"133\" title=\"Контактная форма\"]");
+        <?php
+            $formshortcode = "[contact-form-7 id='133' title='Контактная форма']";
+            if(ICL_LANGUAGE_CODE == 'en'){
+                $formshortcode = '[contact-form-7 id="307" title="Contact_form_ENG"]';
+            };
+            if(ICL_LANGUAGE_CODE == 'es'){
+                $formshortcode = '[contact-form-7 id="308" title="Contact_form_ESP"]';
+            };
+            echo do_shortcode("$formshortcode");
         ?>
 
         <?php

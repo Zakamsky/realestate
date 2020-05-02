@@ -10,7 +10,16 @@
  */
 ?>
 
-<form action="<?php echo WPP_F::base_url($wp_properties['configuration']['base_slug']); ?>" method="post"
+<form action="<?php
+                    $action = WPP_F::base_url($wp_properties['configuration']['base_slug']);
+                    if(ICL_LANGUAGE_CODE == 'en'){
+                        $action .= "/?lang=en";
+                    };
+                    if(ICL_LANGUAGE_CODE == 'es'){
+                        $action .= "/?lang=es";
+                    };
+                    echo $action;
+?>" method="post"
             class="wpp_shortcode_search_form" >
     <button class="close--search_form btn click-opener-js" >
         <img style='display:block; width:16px;height:16px;'

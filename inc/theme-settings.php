@@ -63,3 +63,17 @@ if( function_exists('acf_add_options_page') ) {
 
 
 }
+
+function register_new_widgets(){
+    register_sidebar( array(
+        'name' => 'Страница недвижимости',
+        'id' => 'property-sidebar',
+        'description' => 'Выводиться под шапкой на страницах с шаблоном "Страница Недвижимости".',
+        'class'         => '',
+        'before_widget' => '',
+        'after_widget'  => '',
+        'before_title' => '<h2 class="widgettitle">',
+        'after_title' => '</h2>',
+    ) );
+}
+add_action( 'widgets_init', 'register_new_widgets' );

@@ -70,7 +70,9 @@
   // validation errors ourput bottom of form
   .wpcf7-validation-errors {
     @extend .form-control;
-    color: theme-color("danger");
-    border: 1px solid $gray-200;
+	margin: -25px 0 25px;
+	height: auto;
+	color: theme-color("danger");
+	border: 1px solid rgba($danger, 0.4);
   }
 }

@@ -351,8 +351,7 @@ function draw_stats($args = false, $property = false)
                     break;
                 case 'plain_list':
                     ?>
-                    <span class="<?php echo $args['stats_prefix']; ?>_<?php echo $tag; ?> attribute"><?php echo $label; ?>
-                        :</span>
+                    <span class="<?php echo $args['stats_prefix']; ?>_<?php echo $tag; ?> attribute"><?php echo $label; ?>:</span>
                     <span class="<?php echo $args['stats_prefix']; ?>_<?php echo $tag; ?> value"><?php echo $value; ?>
                         &nbsp;</span>
                     <br/>
@@ -362,6 +361,11 @@ function draw_stats($args = false, $property = false)
                     ?>
                     <h4 class="wpp_attribute"><?php echo $label; ?><span class="separator">:</span></h4>
                     <p class="value"><?php echo $value; ?>&nbsp;</p>
+                    <?php
+                    break;
+                case 'value_only':
+                    ?>
+                    <span class="property_span"><?php echo $value; ?></span>
                     <?php
                     break;
             }
@@ -479,6 +483,11 @@ function draw_stats($args = false, $property = false)
                             }
                         }
                         ?>
+                        <?php
+                        break;
+                    case 'value_only':
+                        ?>
+                        <span class="property_span"><?php echo $value; ?></span>
                         <?php
                         break;
                 }
