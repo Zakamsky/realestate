@@ -27,17 +27,6 @@ global $wp_it_num;
 
 	    </header><!-- .entry-header -->
     </a>
-        <?php if ( 'post' == get_post_type() ) : ?>
-            <div class="entry-meta d-flex justify-content-between">
-                <span>
-                    <?php understrap_posted_on(); ?>
-                </span>
-                <span>
-                    <?php understrap_entry_footer(); ?>
-                </span>
-
-            </div><!-- .entry-meta -->
-        <?php endif; ?>
 
         <div class="entry-content">
 

@@ -12,9 +12,6 @@ defined( 'ABSPATH' ) || exit;
 <article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 <!--    content-single.php      -->
 
-    <div class="entry-meta">
-        <?php understrap_posted_on(); ?>
-    </div><!-- .entry-meta -->
 	<div class="entry-content">
 
 		<?php the_content(); ?>

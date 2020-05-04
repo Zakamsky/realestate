@@ -1,0 +1,29 @@
+.heroblock{
+  position: static;
+  height: 100%;
+  padding-top: $wrapper-navbar-height !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include media-breakpoint-up(lg) {
+	  position: absolute;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+  }
+  &__logo{
+	width: 160px;
+	margin-bottom: 2rem;
+	@include media-breakpoint-up(lg){
+	  width: 12.01vw;
+	}
+  }
+  &__svg{
+	fill: $primary;
+	filter: drop-shadow(0 0 0.55rem $secondary) drop-shadow(0 0.3rem 0.75rem $secondary);
+  }
+  &__title{
+	margin-bottom: 3rem;
+  }
+}

@@ -10,7 +10,7 @@
 
 
 
-		<ul class="reviews__list">
+		<ul class="reviews__list reviews__list_slider-js">
 
 			<?php while( have_rows('reviews') ): the_row();
 

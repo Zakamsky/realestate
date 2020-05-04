@@ -31,7 +31,9 @@ jQuery( document ).ready(function ($) {
 
     /*parallax end*/
 // slider featured property
-    $('.wp_property_slider-js').slick({
+//     $('.wp_property_slider-js').slick({
+//     $('.wp_property_slider-js').slick(setting);
+    	const slickSetting = {
         dots: true,
         infinite: true,
         speed: 300,
@@ -56,7 +58,11 @@ jQuery( document ).ready(function ($) {
                 }
             }
         ]
-    });
+    };
+	$('.wp_property_slider-js').slick( slickSetting );
+	$('.reviews__list_slider-js').slick( slickSetting );
+
+	//  );
 //property search filter
     $('.click-opener-js').click(function () {
         event.preventDefault();

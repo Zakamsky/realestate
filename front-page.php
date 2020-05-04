@@ -26,6 +26,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
     <div class="wrapper main-content-wrapper index-wrapper" id="index-wrapper">
 
+		<?php get_template_part( 'sidebar-templates/sidebar', 'statichero' ); ?>
+
         <div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
 
             <div class="row">

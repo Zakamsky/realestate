@@ -9,6 +9,12 @@
   height: $wrapper-navbar-height;
   z-index: $zindex-navbar;
 }
+@include media-breakpoint-up(lg){
+  .admin-bar .wrapper-navbar{
+		top: 32px;
+  }
+}
+
 .collapse{
   transition: $property-card-transition;
 }
@@ -68,11 +74,9 @@ nav.navbar{
   }
 }
 #wrapper-hero.wrapper-hero{
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
   height: 100vh;
-  padding-top: $wrapper-navbar-height !important;
+  overflow: hidden;
 }
 .main-content-wrapper:not(.index-wrapper) {
   margin-top: 0;
@@ -309,6 +313,7 @@ article.post{
   &--link{
     display: block;
     text-decoration: none;
+	margin-bottom: 1rem;
   }
   .entry_header{
     position: relative;
@@ -363,7 +368,8 @@ article.post{
 //@import "parallax_css";
 @import "parallax_js";
 @import "property";
+@import "heroblock";
+@import "reviews";
 @import "../assets/slick";
-//@import "../assets/slick";
 @import "../assets/slick-theme";
 @import "media";
