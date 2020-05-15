@@ -17,17 +17,25 @@
 				// vars
 				$review_title = get_sub_field('review_title');
 				$review_text = get_sub_field('review_text');
+				$review_image = get_sub_field('review_image');
 
 				?>
 
 				<li class="reviews__item">
-					<div class="reviews__item-wrapper">
-						<p class="reviews__item-title">
-							<?php echo $review_title; ?>
-						</p>
-						<p class="reviews__item-text">
+					<div class="reviews__blockquote">
+						<p class="reviews__text">
 							<?php echo $review_text; ?>
 						</p>
+					</div>
+					<div class="reviews__author">
+						<p class="reviews__author-name">
+							<?php echo $review_title; ?>
+						</p>
+						<?php if( $review_image ): ?>
+							<img class="reviews__thumbnails" src="<?php echo $review_image['url']; ?>" alt="<?php echo $review_image['alt'] ?>" />
+						<?php else: ?>
+							<img class="reviews__thumbnails" src="<?php echo ARS_IMG_DIR; ?>/user.png" alt="review's author photo" >
+						<?php endif; ?>
 					</div>
 				</li>
 

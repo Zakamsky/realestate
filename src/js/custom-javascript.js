@@ -31,9 +31,7 @@ jQuery( document ).ready(function ($) {
 
     /*parallax end*/
 // slider featured property
-//     $('.wp_property_slider-js').slick({
-//     $('.wp_property_slider-js').slick(setting);
-    	const slickSetting = {
+	const slickSetting = {
         dots: true,
         infinite: true,
         speed: 300,
@@ -59,8 +57,27 @@ jQuery( document ).ready(function ($) {
             }
         ]
     };
+
+	const wideSlickSetting = {
+		dots: true,
+		infinite: true,
+		speed: 300,
+		slidesToShow: 1,
+		slidesToScroll: 1,
+		mobileFirst: true,
+		responsive: [
+			{
+				breakpoint: 992,
+				settings: {
+					slidesToShow: 2,
+					slidesToScroll: 1
+				}
+			}
+		]
+	};
+
 	$('.wp_property_slider-js').slick( slickSetting );
-	$('.reviews__list_slider-js').slick( slickSetting );
+	$('.reviews__list_slider-js').slick( wideSlickSetting );
 
 	//  );
 //property search filter
