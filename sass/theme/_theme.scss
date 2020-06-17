@@ -1,3 +1,11 @@
+:root{
+  --hero-block-height: 46vh;
+}
+@include media-breakpoint-up(lg){
+  :root{
+	--hero-block-height: 100vh;
+  }
+}
 .wrapper{
   overflow-x: hidden;
 }
@@ -59,6 +67,7 @@ nav.navbar{
   left: 0;
   right: 0;
   height: 100vh;
+  height: var(--hero-block-height, 100vh);
   z-index: $zindex-slider;
   overflow: hidden;
   .carousel-inner,
@@ -76,8 +85,17 @@ nav.navbar{
 #wrapper-hero.wrapper-hero{
   position: relative;
   height: 100vh;
+  height: var(--hero-block-height, 100vh);
   overflow: hidden;
+  opacity: 1;
+  z-index: 1;
+  background: #fff;
 }
+//@include media-breakpoint-up(lg){
+//  #wrapper-hero.wrapper-hero{
+//	height: 100vh;
+//  }
+//}
 .main-content-wrapper:not(.index-wrapper) {
   margin-top: 0;
   padding-top: 0;
@@ -122,8 +140,11 @@ nav.navbar{
       left: 50%;
       width: 100vw;
       margin-left: -50vw;
-      background-attachment: fixed;
       background-size: cover;
+	  @include media-breakpoint-up(lg){
+		background-attachment: fixed;
+		background-size: auto;
+	  }
     }
     &_title{
       position: relative;

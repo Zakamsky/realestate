@@ -59,6 +59,9 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<?php get_template_part( 'loop-templates/reviews' ); ?>
 
 		</div><!-- .row -->
+
+		<?php echo do_shortcode('[sendpulse-form id="1668"]'); ?>
+
 	</div><!-- #content -->
 
 </div><!-- #page-wrapper -->

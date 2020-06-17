@@ -32,7 +32,7 @@ $container = get_theme_mod( 'understrap_container_type' );
         <div class="entry_header--block_title parallax__layer parallax__layer--base">
             <?php the_title( '<h1 class="entry_header--title">', '</h1>' ); ?>
         </div>
-        
+
     </header><!-- .entry-header -->
 
 	<div class="<?php echo esc_attr( $container ); ?>" id="content" tabindex="-1">
@@ -63,6 +63,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 			<?php get_template_part( 'global-templates/right-sidebar-check' ); ?>
 
 		</div><!-- .row -->
+
+		<?php echo do_shortcode('[sendpulse-form id="1668"]'); ?>
 
 	</div><!-- #content -->
 

@@ -13,9 +13,11 @@
 	  right: 0;
   }
   &__logo{
-	width: 160px;
-	margin-bottom: 2rem;
+	display: none;
 	@include media-breakpoint-up(lg){
+	  display: block;
+	  //width: 160px; //md
+	  margin-bottom: 2rem;
 	  width: 12.01vw;
 	}
   }

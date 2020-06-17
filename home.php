@@ -85,6 +85,8 @@ $container = get_theme_mod( 'understrap_container_type' );
 
                 </div><!-- .row -->
 
+				<?php echo do_shortcode('[sendpulse-form id="1668"]'); ?>
+
             </div><!-- #content -->
 
         </div><!-- #page-wrapper -->
